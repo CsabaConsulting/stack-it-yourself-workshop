@@ -46,9 +46,9 @@ Fallen behind? Copy the step's file and run `docker compose up -d` - you're back
 |---|---|---|
 | `ollama:qwen3:1.7b` | `OllamaModel` | Chat Completions |
 | `openai-responses:qwen3:1.7b` | `OpenAIResponsesModel` | Responses |
-| `openai-chat:Qwen3-1.7B` | `OpenAIChatModel` | Chat Completions |
+| `openai-chat:qwen3-4b-instruct` | `OpenAIChatModel` | Chat Completions (the hosted fallback) |
 
-**"OpenAI-compatible" is a spectrum, not a guarantee.** Ollama speaks both surfaces, and so does vLLM. Some hosted catalog models speak only Chat Completions and answer the Responses API with `400`. Step 2 shows this live.
+**"OpenAI-compatible" is a spectrum, not a guarantee.** Ollama speaks both surfaces, and so does vLLM. The Azure AI Foundry fallback serves both too, but on the same deployment Chat Completions measured about 1.8 s per turn against 3.2 s for the Responses API. A per-deployment route on that same service accepts only an `api-key` header, so the OpenAI SDK's default `Bearer` auth gets a `401` there. Some hosted catalogs speak only Chat Completions and answer the Responses API with `400`. The base URL gets you most of the way; the details are why you test, and why you trace.
 
 **Telemetry is standard OpenTelemetry.** The agent calls `Agent.instrument_all()` once, and `opentelemetry-instrument` wires the SDK from standard `OTEL_*` variables. There's no vendor SDK and no account. Spans follow the [OpenTelemetry GenAI semantic conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/). FastMCP carries the trace into the MCP server through the request's `_meta` field, per [SEP-414](https://modelcontextprotocol.io/seps/414-request-meta).
 
@@ -65,7 +65,7 @@ mcp-server/              FastMCP server: a conference workshop schedule (the dem
 images/ollama-cpu/       official Ollama binary, CPU backends only (~54 MB vs 3.75 GB)
 grafana/dashboards/      the workshop dashboard, provisioned into Grafana
 k8s/                     kind cluster + manifests for Step 6
-scripts/                 preflight, offline bundle, cluster up/down (bash + PowerShell)
+scripts/                 preflight, offline bundle, cluster up/down, hosted fallback (bash + PowerShell)
 ```
 
 ## Configuration reference
@@ -96,5 +96,5 @@ scripts/                 preflight, offline bundle, cluster up/down (bash + Powe
 - **Publish the images first.** Tag a release, and [`.github/workflows/publish-images.yml`](.github/workflows/publish-images.yml) builds multi-arch images and pushes them to GHCR. Make the packages public, then point `compose.yaml`'s `IMAGE_PREFIX` default at `ghcr.io/<owner>/stack-it-yourself`. Until you do, preflight builds the images locally, which downloads about 4 GB instead of about 0.2 GB. The default prefix `sit.local` is deliberately not a real registry, so a missing image can never be pulled from someone else's namespace.
 - **Offline USB bundles:** on a machine that has passed preflight, run `./scripts/offline-bundle.sh export <dir>`. Attendees then run `import`, with no network needed.
 - **Step 6:** `./scripts/cluster-up.sh` takes about five minutes the first time, so run it before you need it. It loads images from your local Docker cache into kind, so there are no registry pulls during the session.
-- **Hosted fallback:** for attendees whose laptop can't run the model, [`env/hosted.env.example`](env/hosted.env.example) points at an **Azure AI Foundry** deployment of `Qwen3-1.7B`, the same tier everyone else runs locally. Deploy it ahead of time, hand out the endpoint and a key, and attendees copy the file to `env/hosted.env` and fill in those two values. It speaks Chat Completions only, hence the `openai-chat:` prefix. Any other OpenAI-compatible endpoint works too.
+- **Hosted fallback:** for attendees whose laptop can't run the model, [`env/hosted.env.example`](env/hosted.env.example) points at an **Azure AI Foundry** deployment of **Qwen3-4B-Instruct-2507**, the same model as the recommended local tier. (Qwen3-1.7B isn't offered as a hosted model in Foundry.) [`scripts/hosted-fallback.ps1`](scripts/hosted-fallback.ps1) (or `.sh`) manages it: `up` deploys it on one A100 in your Foundry resource in 15-20 minutes, `env` writes `env/hosted.env` for testing, and `down` deletes it. Managed compute bills per GPU-hour **while the deployment exists** (about USD 3.95/hour), so run `up` shortly before the session and `down` straight after. Hand attendees the endpoint and a key, and rotate the key afterwards. The endpoint serves Chat Completions and the Responses API. In testing it handled 20 concurrent requests at about 1 second median, and the agent got 8/8 tool calls right. Any other OpenAI-compatible endpoint works too.
 - **Reusing it for another event:** the demo data is event-specific. Replace `WORKSHOPS` and the server's `instructions` in [`mcp-server/server.py`](mcp-server/server.py), change the event name in the first sentence of both instruction strings in [`agent/app/assistant.py`](agent/app/assistant.py), and update the hint text in [`agent/app/static/index.html`](agent/app/static/index.html) and the example questions in [`CHEATSHEET.md`](CHEATSHEET.md). Nothing else is tied to one event.

@@ -69,8 +69,8 @@ async def chat(req: ChatRequest):
         # finds every turn of a conversation - even across container restarts in Step 4.
         result = await agent.run(req.message, message_history=past, conversation_id=conversation_id)
     except ModelHTTPError as exc:
-        # Surfaced on purpose: in Step 2 a backend that doesn't speak the Responses API
-        # answers 400, and that failure is the lesson.
+        # Surfaced on purpose: a backend that rejects a request (for example one that doesn't
+        # speak the Responses API, or a wrong key) should say so plainly, not hang or crash.
         detail = exc.body if isinstance(exc.body, str) else json.dumps(exc.body, default=str)
         logger.warning("model backend rejected request: status=%s body=%s", exc.status_code, detail)
         return JSONResponse(

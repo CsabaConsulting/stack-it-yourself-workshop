@@ -123,7 +123,7 @@ What's available depends on your workshop, so check with the organisers. The rep
 | Situation | What helps |
 |---|---|
 | **Couldn't download** | An **offline bundle** - every image and the model on a USB drive, if your instructors bring one. One command installs it with no network: `./scripts/offline-bundle.sh import <drive>` (or `offline-bundle.ps1 import <drive>`). |
-| **Laptop can't run the model** | A **hosted OpenAI-compatible endpoint**, if your instructors provide one (or you have your own). Copy `env/hosted.env.example` to `env/hosted.env`, fill in the values, and do every exercise the same way as everyone else. |
+| **Laptop can't run the model** | The **hosted fallback on Azure AI Foundry**, serving the same model tier as everyone else. Copy `env/hosted.env.example` to `env/hosted.env`, fill in the endpoint and key your instructors give you, and do every exercise the same way as everyone else. |
 | **Laptop can't run containers at all** | Pair with a neighbour - this material pairs well - or follow along on the big screen. Every step is shown. |
 
 Every step is one command against a known-good configuration, so if you fall behind, one command puts you back with the room.

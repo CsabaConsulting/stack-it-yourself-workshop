@@ -32,4 +32,4 @@ Windows: `cp` works in PowerShell. In cmd, use `copy`.
 | Start clean | `docker compose --profile observability --profile state --profile tools down` then redo the current step |
 | Peek into Redis | `docker compose exec redis redis-cli KEYS 'conversation:*'` |
 | Hit the model directly | `curl http://localhost:11434/v1/models` |
-| Local model won't run | Use a hosted OpenAI-compatible endpoint: `cp env/hosted.env.example env/hosted.env` and fill it in |
+| Local model won't run | Hosted fallback on Azure AI Foundry: `cp env/hosted.env.example env/hosted.env`, fill in the endpoint and key, then `docker compose up -d` |

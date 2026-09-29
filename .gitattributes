@@ -1,0 +1,6 @@
+# Keep LF everywhere so shell scripts and .env files work inside Linux containers,
+# even when the repo is cloned on Windows.
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.png binary
+*.jpg binary

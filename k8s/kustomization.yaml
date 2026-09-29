@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: stack-it-yourself
+resources:
+  - namespace.yaml
+  - config.yaml
+  - ollama.yaml
+  - redis.yaml
+  - lgtm.yaml
+  - mcp-server.yaml
+  - agent.yaml
+# Images are loaded into kind from your local Docker cache (scripts/cluster-up.*),
+# so no registry pull is needed on conference Wi-Fi.
+images:
+  - name: workshop/ollama-cpu
+    newName: sit.local/ollama-cpu
+    newTag: "0.34.4"
+  - name: workshop/agent
+    newName: sit.local/agent
+    newTag: dev
+  - name: workshop/mcp-server
+    newName: sit.local/mcp-server
+    newTag: dev

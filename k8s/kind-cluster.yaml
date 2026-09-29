@@ -1,0 +1,14 @@
+# A single-node kind cluster for the Compose -> Kubernetes step.
+#   kind create cluster --config k8s/kind-cluster.yaml
+# NodePorts are mapped to different host ports than Compose uses (8081, 3001), so both
+# stacks can run side by side for the "same code, same traces" comparison.
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: stack-it-yourself
+nodes:
+  - role: control-plane
+    extraPortMappings:
+      - containerPort: 30080   # agent  -> http://localhost:8081
+        hostPort: 8081
+      - containerPort: 30300   # Grafana -> http://localhost:3001
+        hostPort: 3001

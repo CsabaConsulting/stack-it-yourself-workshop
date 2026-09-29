@@ -1,0 +1,16 @@
+# Workshop state that must never be committed
+.env
+env/hosted.env
+ollama-data/
+offline-bundle/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,59 @@
+# Compose `lgtm` service -> Deployment + Services.
+# The single otel-lgtm container is a development convenience. In production it becomes an
+# OpenTelemetry Collector (batching, tail sampling, redaction) plus Tempo, Loki, Prometheus/Mimir
+# and Grafana as separate components - and the agent's OTLP endpoint is the only thing that changes.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lgtm
+  labels: { app: lgtm }
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: lgtm }
+  template:
+    metadata:
+      labels: { app: lgtm }
+    spec:
+      containers:
+        - name: lgtm
+          image: grafana/otel-lgtm:0.34.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+            - containerPort: 4318
+          volumeMounts:
+            - name: dashboards
+              mountPath: /otel-lgtm/grafana/conf/provisioning/dashboards/workshop.yaml
+              subPath: provider.yaml
+            - name: dashboards
+              mountPath: /otel-lgtm/workshop-agent-dashboard.json
+              subPath: agent.json
+          readinessProbe:
+            httpGet: { path: /api/health, port: 3000 }
+            periodSeconds: 5
+      volumes:
+        - name: dashboards
+          configMap: { name: workshop-dashboards }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lgtm
+spec:
+  selector: { app: lgtm }
+  ports:
+    - { name: otlp-http, port: 4318, targetPort: 4318 }
+    - { name: grafana, port: 3000, targetPort: 3000 }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+spec:
+  type: NodePort
+  selector: { app: lgtm }
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30300   # -> http://localhost:3001 via kind-cluster.yaml

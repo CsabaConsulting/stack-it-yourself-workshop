@@ -1,0 +1,46 @@
+# Publish the workshop images so attendees pull ~220 MB of prebuilt images instead of
+# building them (which downloads the 3.75 GB official Ollama image and PyPI wheels).
+#
+# After this runs, attendees set IMAGE_PREFIX=ghcr.io/<owner>/stack-it-yourself and run preflight.
+# Make the GHCR packages public (Package settings -> Change visibility) so no login is needed.
+name: Publish workshop images
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - { name: ollama-cpu, context: images/ollama-cpu, tag: "0.34.4" }
+          - { name: agent,      context: agent,             tag: "" }
+          - { name: mcp-server, context: mcp-server,        tag: "" }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - id: meta
+        run: |
+          owner="$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')"
+          version="${{ matrix.tag }}"
+          if [ -z "$version" ]; then version="${GITHUB_REF_NAME#v}"; [ "$GITHUB_REF_TYPE" = tag ] || version=dev; fi
+          echo "image=ghcr.io/$owner/stack-it-yourself/${{ matrix.name }}:$version" >> "$GITHUB_OUTPUT"
+      - uses: docker/build-push-action@v6
+        with:
+          context: ${{ matrix.context }}
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta.outputs.image }}

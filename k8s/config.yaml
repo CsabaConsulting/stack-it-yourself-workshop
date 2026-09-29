@@ -1,0 +1,37 @@
+# Compose `environment:` / `.env`  ->  ConfigMap (settings) + Secret (credentials).
+# These are exactly the Step 5 values. The base URLs are now cluster DNS names.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: agent-config
+data:
+  MODEL: openai-responses:qwen3:1.7b
+  OPENAI_BASE_URL: http://ollama:11434/v1
+  OLLAMA_BASE_URL: http://ollama:11434/v1
+  REASONING: "off"
+  HISTORY_BACKEND: redis
+  REDIS_URL: redis://redis:6379/0
+  TOOLS: local,mcp
+  MCP_SERVER_URL: http://mcp-server:8001/mcp
+  GRAFANA_URL: http://localhost:3001
+  PYDANTIC_AI_NO_BANNER: "1"
+  CAPTURE_CONTENT: "true"
+  OTEL_SDK_DISABLED: "false"
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://lgtm:4318
+  OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
+  OTEL_TRACES_EXPORTER: otlp
+  OTEL_METRICS_EXPORTER: otlp
+  OTEL_LOGS_EXPORTER: otlp
+  OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED: "true"
+  OTEL_PYTHON_FASTAPI_EXCLUDED_URLS: healthz
+  OTEL_METRIC_EXPORT_INTERVAL: "5000"
+  OTEL_BSP_SCHEDULE_DELAY: "1000"
+  OTEL_RESOURCE_ATTRIBUTES: deployment.environment.name=kind
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: agent-secrets
+type: Opaque
+stringData:
+  OPENAI_API_KEY: ollama   # a placeholder for Ollama; a real key for a hosted backend

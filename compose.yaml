@@ -1,0 +1,127 @@
+# Stack It Yourself - the whole workshop stack.
+#
+#   Every step:   cp env/stepN.env .env     then     docker compose up -d
+#
+# The code never changes between steps. Only .env changes - diff two step files to see
+# exactly what each step turns on:   git diff --no-index env/step2.env env/step3.env
+
+name: stack-it-yourself
+
+x-otel: &otel
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://lgtm:4318
+  OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
+  OTEL_TRACES_EXPORTER: otlp
+  OTEL_METRICS_EXPORTER: otlp
+  OTEL_LOGS_EXPORTER: otlp
+  OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED: "true"
+  OTEL_METRIC_EXPORT_INTERVAL: "5000"
+  OTEL_BSP_SCHEDULE_DELAY: "1000"
+
+services:
+  # Local, OpenAI-compatible inference. CPU-only image - see images/ollama-cpu.
+  ollama:
+    image: ${IMAGE_PREFIX:-sit.local}/ollama-cpu:0.34.4
+    build:
+      context: ./images/ollama-cpu
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./ollama-data:/root/.ollama   # model weights live in a plain folder you can copy from a USB stick
+    environment:
+      OLLAMA_KEEP_ALIVE: 24h
+      OLLAMA_CONTEXT_LENGTH: "8192"
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 120s
+      start_interval: 2s
+    restart: unless-stopped
+
+  # The agent: Pydantic AI behind a small FastAPI app. Open http://localhost:8000
+  agent:
+    image: ${IMAGE_PREFIX:-sit.local}/agent:${WORKSHOP_VERSION:-dev}
+    build: ./agent
+    ports:
+      - "8000:8000"
+    env_file:
+      - path: .env                  # the step you are on
+        required: true
+      - path: env/hosted.env        # hosted fallback only; overrides the model settings
+        required: false
+    environment:
+      <<: *otel
+      OTEL_SERVICE_NAME: agent
+      OTEL_PYTHON_FASTAPI_EXCLUDED_URLS: healthz   # keep container healthchecks out of Tempo
+      OLLAMA_BASE_URL: http://ollama:11434/v1
+      REDIS_URL: redis://redis:6379/0
+      MCP_SERVER_URL: http://mcp-server:8001/mcp
+      GRAFANA_URL: http://localhost:3000
+      PYDANTIC_AI_NO_BANNER: "1"
+    depends_on:
+      ollama:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+        required: false
+      mcp-server:
+        condition: service_healthy
+        required: false
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/healthz')"]
+      interval: 30s        # each check starts a Python interpreter - keep them rare once healthy
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+      start_interval: 2s
+    restart: unless-stopped
+
+  # Step 3: Loki + Grafana + Tempo + Prometheus + an OTel collector, in one container.
+  # Open http://localhost:3000
+  lgtm:
+    image: grafana/otel-lgtm:0.34.0
+    profiles: [observability]
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/dashboards/provider.yaml:/otel-lgtm/grafana/conf/provisioning/dashboards/workshop.yaml:ro
+      - ./grafana/dashboards/agent.json:/otel-lgtm/workshop-agent-dashboard.json:ro
+    restart: unless-stopped
+
+  # Step 4: durable conversation history.
+  redis:
+    image: redis:8.10-alpine
+    profiles: [state]
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 15s
+      timeout: 3s
+      retries: 5
+      start_period: 30s
+      start_interval: 1s
+    restart: unless-stopped
+
+  # Step 5: tools in a different process, reached over MCP (Streamable HTTP).
+  mcp-server:
+    image: ${IMAGE_PREFIX:-sit.local}/mcp-server:${WORKSHOP_VERSION:-dev}
+    build: ./mcp-server
+    profiles: [tools]
+    environment:
+      <<: *otel
+      OTEL_SERVICE_NAME: mcp-server
+      OTEL_SDK_DISABLED: ${OTEL_SDK_DISABLED:-true}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8001/healthz')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+      start_interval: 2s
+    restart: unless-stopped
+
+volumes:
+  redis-data:

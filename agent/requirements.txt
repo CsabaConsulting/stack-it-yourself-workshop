@@ -1,0 +1,11 @@
+pydantic-ai-slim[openai,mcp]==2.51.0
+fastapi==0.141.1
+uvicorn[standard]==0.54.0
+redis==8.1.0
+tzdata==2026.4
+opentelemetry-distro==0.66b0
+opentelemetry-exporter-otlp-proto-http==1.45.0
+opentelemetry-instrumentation-fastapi==0.66b0
+opentelemetry-instrumentation-httpx==0.66b0
+opentelemetry-instrumentation-redis==0.66b0
+opentelemetry-instrumentation-logging==0.66b0

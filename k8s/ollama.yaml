@@ -1,0 +1,57 @@
+# Compose `ollama` service + `./ollama-data` folder  ->  Deployment + PersistentVolumeClaim + Service.
+# On a real cluster this is where a GPU node selector and resource limit would go:
+#   nodeSelector: { nvidia.com/gpu.present: "true" }
+#   resources.limits: { nvidia.com/gpu: 1 }
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ollama-models
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 6Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+  labels: { app: ollama }
+spec:
+  replicas: 1
+  strategy: { type: Recreate }
+  selector:
+    matchLabels: { app: ollama }
+  template:
+    metadata:
+      labels: { app: ollama }
+    spec:
+      containers:
+        - name: ollama
+          image: workshop/ollama-cpu
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 11434
+          env:
+            - { name: OLLAMA_KEEP_ALIVE, value: 24h }
+            - { name: OLLAMA_CONTEXT_LENGTH, value: "8192" }
+          volumeMounts:
+            - { name: models, mountPath: /root/.ollama }
+          readinessProbe:
+            exec: { command: ["ollama", "list"] }
+            periodSeconds: 5
+          resources:
+            requests: { cpu: "1", memory: 2Gi }
+      volumes:
+        - name: models
+          persistentVolumeClaim: { claimName: ollama-models }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama
+spec:
+  selector: { app: ollama }
+  ports:
+    - port: 11434
+      targetPort: 11434

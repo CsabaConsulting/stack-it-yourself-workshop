@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-server
+  labels: { app: mcp-server }
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: mcp-server }
+  template:
+    metadata:
+      labels: { app: mcp-server }
+    spec:
+      containers:
+        - name: mcp-server
+          image: workshop/mcp-server
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8001
+          env:
+            - { name: OTEL_SERVICE_NAME, value: mcp-server }
+          envFrom:
+            - configMapRef: { name: agent-config }   # reuses the OTEL_* settings
+          readinessProbe:
+            httpGet: { path: /healthz, port: 8001 }
+            periodSeconds: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mcp-server
+spec:
+  selector: { app: mcp-server }
+  ports:
+    - port: 8001
+      targetPort: 8001

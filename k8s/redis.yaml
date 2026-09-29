@@ -1,0 +1,36 @@
+# Compose `redis` service -> Deployment + Service.
+# For production this becomes a StatefulSet with a persistent volume, or a managed service -
+# the agent only needs REDIS_URL either way.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  labels: { app: redis }
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: redis }
+  template:
+    metadata:
+      labels: { app: redis }
+    spec:
+      containers:
+        - name: redis
+          image: redis:8.10-alpine
+          imagePullPolicy: IfNotPresent
+          args: ["redis-server", "--appendonly", "yes"]
+          ports:
+            - containerPort: 6379
+          readinessProbe:
+            exec: { command: ["redis-cli", "ping"] }
+            periodSeconds: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+spec:
+  selector: { app: redis }
+  ports:
+    - port: 6379
+      targetPort: 6379

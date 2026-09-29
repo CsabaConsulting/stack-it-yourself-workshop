@@ -1,0 +1,78 @@
+{
+  "uid": "stack-it-yourself-agent",
+  "title": "Stack It Yourself - Agent",
+  "description": "Workshop dashboard: agent turns, GenAI token usage, latency, traces and correlated logs. Built on OpenTelemetry GenAI semantic conventions.",
+  "tags": ["workshop", "genai", "opentelemetry"],
+  "timezone": "browser",
+  "schemaVersion": 41,
+  "version": 1,
+  "editable": true,
+  "graphTooltip": 1,
+  "time": { "from": "now-30m", "to": "now" },
+  "refresh": "10s",
+  "panels": [
+    {
+      "id": 1, "type": "stat", "title": "Agent turns (range)",
+      "gridPos": { "x": 0, "y": 0, "w": 6, "h": 5 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "refId": "A", "expr": "sum(increase(http_server_duration_milliseconds_count{service_name=\"agent\", http_target=\"/chat\"}[$__range]))", "instant": true }],
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "value", "graphMode": "none" },
+      "fieldConfig": { "defaults": { "decimals": 0, "unit": "none" }, "overrides": [] }
+    },
+    {
+      "id": 2, "type": "stat", "title": "Tokens used (range)",
+      "gridPos": { "x": 6, "y": 0, "w": 6, "h": 5 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "refId": "A", "expr": "sum by (gen_ai_token_type) (increase(gen_ai_client_token_usage_sum{service_name=\"agent\"}[$__range]))", "legendFormat": "{{gen_ai_token_type}}", "instant": true }],
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "value", "graphMode": "none", "textMode": "value_and_name" },
+      "fieldConfig": { "defaults": { "decimals": 0, "unit": "none" }, "overrides": [] }
+    },
+    {
+      "id": 3, "type": "stat", "title": "Avg input tokens per model call",
+      "description": "Grows turn by turn: the whole conversation history is resent to the model on every turn.",
+      "gridPos": { "x": 12, "y": 0, "w": 6, "h": 5 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "refId": "A", "expr": "sum(increase(gen_ai_client_token_usage_sum{service_name=\"agent\", gen_ai_token_type=\"input\"}[$__range])) / sum(increase(gen_ai_client_token_usage_count{service_name=\"agent\", gen_ai_token_type=\"input\"}[$__range]))", "instant": true }],
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "value", "graphMode": "none" },
+      "fieldConfig": { "defaults": { "decimals": 0, "unit": "none" }, "overrides": [] }
+    },
+    {
+      "id": 4, "type": "stat", "title": "p95 /chat latency (range)",
+      "gridPos": { "x": 18, "y": 0, "w": 6, "h": 5 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "refId": "A", "expr": "histogram_quantile(0.95, sum by (le) (increase(http_server_duration_milliseconds_bucket{service_name=\"agent\", http_target=\"/chat\"}[$__range])))", "instant": true }],
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "value", "graphMode": "none" },
+      "fieldConfig": { "defaults": { "decimals": 0, "unit": "ms" }, "overrides": [] }
+    },
+    {
+      "id": 5, "type": "timeseries", "title": "Tokens per minute, by type",
+      "gridPos": { "x": 0, "y": 5, "w": 12, "h": 8 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "refId": "A", "expr": "sum by (gen_ai_token_type) (rate(gen_ai_client_token_usage_sum{service_name=\"agent\"}[1m])) * 60", "legendFormat": "{{gen_ai_token_type}}" }],
+      "fieldConfig": { "defaults": { "unit": "none", "custom": { "drawStyle": "line", "fillOpacity": 15 } }, "overrides": [] }
+    },
+    {
+      "id": 6, "type": "timeseries", "title": "/chat latency p50 / p95",
+      "gridPos": { "x": 12, "y": 5, "w": 12, "h": 8 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        { "refId": "A", "expr": "histogram_quantile(0.50, sum by (le) (rate(http_server_duration_milliseconds_bucket{service_name=\"agent\", http_target=\"/chat\"}[2m])))", "legendFormat": "p50" },
+        { "refId": "B", "expr": "histogram_quantile(0.95, sum by (le) (rate(http_server_duration_milliseconds_bucket{service_name=\"agent\", http_target=\"/chat\"}[2m])))", "legendFormat": "p95" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "ms", "custom": { "drawStyle": "line", "fillOpacity": 10 } }, "overrides": [] }
+    },
+    {
+      "id": 7, "type": "table", "title": "Recent agent runs (click a Trace ID)",
+      "gridPos": { "x": 0, "y": 13, "w": 24, "h": 9 },
+      "datasource": { "type": "tempo", "uid": "tempo" },
+      "targets": [{ "refId": "A", "datasource": { "type": "tempo", "uid": "tempo" }, "queryType": "traceql", "query": "{ resource.service.name = \"agent\" && span.gen_ai.operation.name = \"invoke_agent\" }", "limit": 20, "tableType": "traces" }]
+    },
+    {
+      "id": 8, "type": "logs", "title": "Logs - agent and MCP server (each line links to its trace)",
+      "gridPos": { "x": 0, "y": 22, "w": 24, "h": 9 },
+      "datasource": { "type": "loki", "uid": "loki" },
+      "targets": [{ "refId": "A", "expr": "{service_name=~\"agent|mcp-server\"}" }],
+      "options": { "showTime": true, "wrapLogMessage": true, "sortOrder": "Descending", "enableLogDetails": true }
+    }
+  ]
+}

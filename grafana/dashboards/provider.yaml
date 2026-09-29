@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: "Stack It Yourself"
+    type: file
+    options:
+      path: /otel-lgtm/workshop-agent-dashboard.json
+      foldersFromFilesStructure: false

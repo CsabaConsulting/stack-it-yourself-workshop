@@ -85,10 +85,14 @@ async def chat(req: ChatRequest):
         )
     except Exception as exc:  # noqa: BLE001 - e.g. the model server is down (the cold open)
         logger.exception("agent run failed")
+        base_url = describe()["base_url"]
+        unfilled = "<" in base_url or "%3C" in base_url.upper()  # hosted.env still has its <placeholders>
         return JSONResponse(
             status_code=502,
             content={
-                "error": "The agent could not get an answer from the model backend",
+                "error": "env/hosted.env still has <placeholder> values - fill in your endpoint and key"
+                if unfilled
+                else "The agent could not get an answer from the model backend",
                 "detail": f"{type(exc).__name__}: {exc}"[:500],
                 "model": settings.model,
                 "trace_id": _trace_id(),

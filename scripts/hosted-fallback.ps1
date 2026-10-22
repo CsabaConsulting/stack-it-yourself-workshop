@@ -5,7 +5,7 @@
   Deploys Qwen3-4B-Instruct-2507 - the same model as the workshop's recommended local tier - on one
   NVIDIA A100 80GB in your Foundry resource. Attendees whose laptops can't run the local model point
   env/hosted.env at it and do every exercise unchanged. It serves both Chat Completions and the
-  Responses API on https://<resource>.openai.azure.com/openai/v1/.
+  Responses API on https://<resource>.services.ai.azure.com/openai/v1/.
 
   Managed compute bills per GPU-hour for as long as the deployment exists (about USD 3.95/hour
   for one A100 80GB when this was written), whether or not anyone calls it. Run "up" shortly before
@@ -45,7 +45,7 @@ function Get-Deployment {
 }
 function Get-BaseUrl {
   $sub = az cognitiveservices account show -n $Account -g $ResourceGroup --subscription $Subscription --query properties.customSubDomainName -o tsv
-  return "https://$sub.openai.azure.com/openai/v1/"
+  return "https://$sub.services.ai.azure.com/openai/v1/"
 }
 
 switch ($Command) {

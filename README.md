@@ -29,10 +29,21 @@ docker compose up -d
 |---|---|---|---|
 | **1** Baseline | - | http://localhost:8000 | An agent on local inference - `OllamaModel`, **Chat Completions** |
 | **2** Modern API | `MODEL=openai-responses:...` | http://localhost:8000 | Same server, **Responses API** - one line changed |
-| **3** Observability | + `observability` profile, `OTEL_SDK_DISABLED=false` | http://localhost:3000 | The agent loop as a trace; GenAI token metrics; logs linked to traces |
-| **4** Durable history | + `state` profile, `HISTORY_BACKEND=redis` | the agent UI | Destroy the container - the conversation survives |
+| **3** Observability | + `observability` profile, `OTEL_SDK_DISABLED=false` | http://localhost:3000, or http://localhost:8000 → ask a question → click **trace ↗** under the reply | The agent loop as a trace; GenAI token metrics; logs linked to traces |
+| **4** Durable history | + `state` profile, `HISTORY_BACKEND=redis` | http://localhost:8000 | Chat, then remove the **agent** container and start a new one (see below). Reload the page: the conversation survives |
 | **5** Tools + MCP | + `tools` profile, `TOOLS=local,mcp` | Grafana | **One trace spanning two processes** (MCP SEP-414) |
 | **6** Compose → cluster | `./scripts/cluster-up.sh` | http://localhost:8081 · :3001 | Same image, same traces, three replicas, one conversation |
+
+**Step 3 shortcut:** you don't have to go through Grafana's menus. Open http://localhost:8000 again, ask a question, and click the **trace ↗** link that now appears under the reply. It opens that exact trace in Grafana.
+
+**Step 4, destroying the container:** chat with the agent first, then remove the agent container and recreate it:
+
+```bash
+docker compose rm -sf agent    # stop and delete the agent container - its memory goes with it
+docker compose up -d           # start a brand-new agent container
+```
+
+Reload http://localhost:8000. The conversation is still there because it lives in Redis, not in the container. Redis keeps running throughout. Try the same thing on step 3's in-memory history to compare: the conversation is gone.
 
 See exactly what a step turns on: `git diff --no-index env/step2.env env/step3.env`
 

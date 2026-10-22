@@ -8,12 +8,13 @@
 |---|---|---|---|
 | **1** Baseline | `cp env/step1.env .env` · `docker compose up -d` | http://localhost:8000 | `class OllamaModel` · `API Chat Completions`. The first reply takes 15–30 s while the model loads. |
 | **2** Responses API | `cp env/step2.env .env` · `docker compose up -d` | http://localhost:8000 | `class OpenAIResponsesModel` · `API Responses`. Same server, one line changed. |
-| **3** Observability | `cp env/step3.env .env` · `docker compose up -d` | http://localhost:3000 → Dashboards → *Stack It Yourself - Agent* | Click **trace ↗** under a reply: `POST /chat → invoke_agent → chat → POST` |
+| **3** Observability | `cp env/step3.env .env` · `docker compose up -d` | http://localhost:3000 → Dashboards → *Stack It Yourself - Agent*. Quicker: http://localhost:8000, ask a question, click **trace ↗** under the reply | The trace shows `POST /chat → invoke_agent → chat → POST` |
 | **4** Redis history | `cp env/step4.env .env` · `docker compose up -d` | http://localhost:8000 | Chat, then `docker compose rm -sf agent` and `docker compose up -d`. Reload the page: the conversation is still there. |
 | **5** Tools + MCP | `cp env/step5.env .env` · `docker compose up -d` | http://localhost:8000 · Grafana | Ask *"What workshops are on Friday?"*, then open its trace. It spans **agent** and **mcp-server**. |
 | **6** Cluster *(about 5 min to set up)* | `./scripts/cluster-up.sh` | http://localhost:8081 · http://localhost:3001 | `kubectl -n stack-it-yourself scale deployment/agent --replicas=3` |
 
 Windows: `cp` works in PowerShell. In cmd, use `copy`.
+macOS/Linux: `Permission denied` running a script? `chmod +x ./scripts/*.sh` once.
 
 ## Good questions to ask the agent
 

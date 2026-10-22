@@ -22,9 +22,12 @@ You will build and run a complete AI agent stack **on your own laptop**: an agen
 ```bash
 git clone <this repository's URL>          # the green "Code" button on GitHub
 cd stack-it-yourself-workshop
+chmod +x ./scripts/preflight.sh   # macOS, Linux, WSL, Git Bash: make the script executable first
 ./scripts/preflight.sh            # macOS, Linux, WSL, Git Bash
 ./scripts/preflight.ps1           # Windows PowerShell
 ```
+
+> **`Permission denied` when you run `./scripts/preflight.sh`?** The script isn't marked executable yet (this happens with ZIP downloads and some Git setups). Run `chmod +x ./scripts/preflight.sh` and try again. The other `.sh` scripts need the same fix: `chmod +x ./scripts/*.sh`.
 
 A good result ends with:
 

@@ -4,7 +4,7 @@
 # Deploys Qwen3-4B-Instruct-2507 - the same model as the workshop's recommended local tier - on one
 # NVIDIA A100 80GB in your Foundry resource. Attendees whose laptops can't run the local model point
 # env/hosted.env at it and do every exercise unchanged. It serves both Chat Completions and the
-# Responses API on https://<resource>.openai.azure.com/openai/v1/.
+# Responses API on https://<resource>.services.ai.azure.com/openai/v1/.
 #
 # Managed compute bills per GPU-hour for as long as the deployment exists (about USD 3.95/hour for
 # one A100 80GB when this was written), whether or not anyone calls it. Run "up" shortly before the
@@ -32,7 +32,7 @@ sub="$(az account show --query id -o tsv)" || { echo "Run 'az login' first."; ex
 dep_url="https://management.azure.com/subscriptions/$sub/resourceGroups/$rg/providers/Microsoft.CognitiveServices/accounts/$account/managedComputeDeployments/$deployment?api-version=$api"
 
 state() { az rest --method get --url "$dep_url" --query properties.provisioningState -o tsv 2>/dev/null || true; }
-base_url() { echo "https://$(az cognitiveservices account show -n "$account" -g "$rg" --query properties.customSubDomainName -o tsv).openai.azure.com/openai/v1/"; }
+base_url() { echo "https://$(az cognitiveservices account show -n "$account" -g "$rg" --query properties.customSubDomainName -o tsv).services.ai.azure.com/openai/v1/"; }
 
 case "$cmd" in
   up)

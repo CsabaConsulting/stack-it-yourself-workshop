@@ -5,6 +5,8 @@ Companion repo for the *Stack It Yourself* hands-on workshop, first delivered at
 You build an AI agent on open infrastructure: local inference through an OpenAI-compatible server, OpenTelemetry traces, metrics and logs in Grafana, durable history in Redis, tools over MCP - then you move the same containers to Kubernetes. **No GPU, no cloud account, no proprietary API key.**
 
 > **Before the workshop:** follow [prerequisites.md](prerequisites.md). It takes about 15 minutes on good Wi-Fi and can't be done on conference Wi-Fi.
+>
+> **New to agents, containers or observability?** [workshop-steps.md](workshop-steps.md) walks through every step in detail: what to run, what you should see, and why each step matters.
 
 ```mermaid
 flowchart LR
@@ -68,6 +70,7 @@ Fallen behind? Copy the step's file and run `docker compose up -d` - you're back
 ## Repo map
 
 ```text
+workshop-steps.md        the detailed walkthrough: what each step does, and why
 compose.yaml             the whole stack; services gated by profiles
 env/step1..5.env         one known-good configuration per step
 env/hosted.env.example   hosted fallback (copy to env/hosted.env)
@@ -109,3 +112,4 @@ scripts/                 preflight, offline bundle, cluster up/down, hosted fall
 - **Step 6:** `./scripts/cluster-up.sh` takes about five minutes the first time, so run it before you need it. It loads images from your local Docker cache into kind, so there are no registry pulls during the session.
 - **Hosted fallback:** for attendees whose laptop can't run the model, [`env/hosted.env.example`](env/hosted.env.example) points at an **Azure AI Foundry** deployment of **Qwen3-4B-Instruct-2507**, the same model as the recommended local tier. (Qwen3-1.7B isn't offered as a hosted model in Foundry.) [`scripts/hosted-fallback.ps1`](scripts/hosted-fallback.ps1) (or `.sh`) manages it: `up` deploys it on one A100 in your Foundry resource in 15-20 minutes, `env` writes `env/hosted.env` for testing, and `down` deletes it. Managed compute bills per GPU-hour **while the deployment exists** (about USD 3.95/hour), so run `up` shortly before the session and `down` straight after. Hand attendees the endpoint and a key, and rotate the key afterwards. The endpoint serves Chat Completions and the Responses API. In testing it handled 20 concurrent requests at about 1 second median, and the agent got 8/8 tool calls right. Any other OpenAI-compatible endpoint works too.
 - **Reusing it for another event:** the demo data is event-specific. Replace `WORKSHOPS` and the server's `instructions` in [`mcp-server/server.py`](mcp-server/server.py), change the event name in the first sentence of both instruction strings in [`agent/app/assistant.py`](agent/app/assistant.py), and update the hint text in [`agent/app/static/index.html`](agent/app/static/index.html) and the example questions in [`CHEATSHEET.md`](CHEATSHEET.md). Nothing else is tied to one event.
+- **The walkthrough:** [workshop-steps.md](workshop-steps.md) explains each step for attendees who are new to the topics, with checkpoints, troubleshooting and an optional instructor-preparation section.

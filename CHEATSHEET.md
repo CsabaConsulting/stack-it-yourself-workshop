@@ -3,6 +3,7 @@
 **Every step:** `cp env/stepN.env .env` then `docker compose up -d`
 **Fallen behind?** Do exactly that for the step the room is on. You're caught up.
 **What did a step change?** `git diff --no-index env/step2.env env/step3.env`
+**Why does each step matter?** [workshop-steps.md](workshop-steps.md) explains every step, with checkpoints and troubleshooting.
 
 | Step | Command | Open | Look for |
 |---|---|---|---|

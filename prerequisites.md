@@ -2,7 +2,7 @@
 
 **Stack It Yourself: Open Infrastructure for AI Agents, from Compose to Cluster**
 
-Your workshop organisers will tell you the date, time and room. This page covers everything to do *before* you get there.
+Your workshop organisers will tell you the date, time and room. This page covers everything to do *before* you get there. Once you're set up, [workshop-steps.md](workshop-steps.md) walks through the workshop itself, step by step.
 
 ---
 

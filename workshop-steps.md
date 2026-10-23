@@ -3,7 +3,6 @@
 ## Open Infrastructure for AI Agents, from Compose to Cluster
 
 **AGNTCon + MCPCon North America 2026**  
-**Planned session:** Friday, October 23, 2026, 10:25 AM-12:00 PM  
 **Location:** San Jose McEnery Convention Center, LL21 DEF
 
 This is a beginner-friendly walkthrough of the workshop in this repository. You will run an AI assistant, change the way it talks to a language model, see what happens inside a request, give it persistent conversation history, connect it to tools, and see the same application run on Kubernetes.
@@ -19,7 +18,7 @@ You do not need to know Python, Docker, Kubernetes, OpenTelemetry, or MCP before
 - [How to use these instructions](#how-to-use-these-instructions)
 - [The workshop at a glance](#the-workshop-at-a-glance)
 - [The pieces you are about to run](#the-pieces-you-are-about-to-run)
-- [Before the workshop: prepare your laptop](#before-the-workshop-prepare-your-laptop)
+- [Prepare your laptop](#prepare-your-laptop)
 - [Step 0: understand the problem](#step-0-understand-the-problem)
 - [Step 1: run an agent on local inference](#step-1-run-an-agent-on-local-inference)
 - [Step 2: change the model API without changing the application](#step-2-change-the-model-api-without-changing-the-application)
@@ -36,8 +35,8 @@ You do not need to know Python, Docker, Kubernetes, OpenTelemetry, or MCP before
 
 1. Complete the preparation section **before** arriving. Downloads are much easier on a reliable connection than on conference Wi-Fi.
 2. Work through the numbered steps in order. Each step has a goal, commands, an explanation, and a checkpoint.
-3. During the live workshop, follow the presenters' pace. Step 6 is planned as a presenter demonstration; you can do it yourself later.
-4. If you fall behind, use the prepared configuration for the step the room is on. You do not need to reconstruct every earlier edit.
+3. Use each checkpoint as a safe pause or resume point. Facilitators can vary the depth of each step for the audience; Step 6 is presenter-led by default but includes self-paced instructions.
+4. To start or resume at any step, copy its prepared configuration. You do not need to reconstruct every earlier edit.
 
 ### Command conventions
 
@@ -60,18 +59,18 @@ The optional hosted-model path uses a second untracked file, `env/hosted.env`. I
 
 ## The workshop at a glance
 
-The live plan is 95 minutes. Preparation and optional experiments are outside that time.
+The path is modular. Use checkpoints as safe pause points and adjust the depth to the audience.
 
-| Planned time | Step | Duration | What you accomplish |
-|---|---|---|---|
-| 10:25 | 0. Understand the problem | 8 minutes | See why an answering model is not the same as a complete agent system |
-| 10:33 | 1. Local baseline | 12 minutes | Run the assistant with a local model, memory-only history, and no tools |
-| 10:45 | 2. Model API | 12 minutes | Change from Chat Completions to the Responses API through configuration |
-| 10:57 | 3. Observability | 18 minutes | Read a trace, token metrics, and correlated logs |
-| 11:15 | 4. Durable history | 10 minutes | Preserve a conversation outside a destroyed agent container |
-| 11:25 | 5. Tools and MCP | 12 minutes | Retrieve schedule facts and follow a trace into another process |
-| 11:37 | 6. Compose to cluster | 14 minutes | Watch the existing images run on Kubernetes and scale the agent |
-| 11:51 | 7. Review and cleanup | 9 minutes | Understand the limitations, stop the lab, and identify next steps |
+| Step | Typical format | What you accomplish |
+|---|---|---|
+| 0. Understand the problem | Presenter-led introduction | See why an answering model is not the same as a complete agent system |
+| 1. Local baseline | Hands-on | Run the assistant with a local model, memory-only history, and no tools |
+| 2. Model API | Hands-on | Change from Chat Completions to the Responses API through configuration |
+| 3. Observability | Guided exploration | Read a trace, token metrics, and correlated logs |
+| 4. Durable history | Hands-on | Preserve a conversation outside a destroyed agent container |
+| 5. Tools and MCP | Hands-on | Retrieve schedule facts and follow a trace into another process |
+| 6. Compose to cluster | Presenter-led or optional self-paced extension | Watch the existing images run on Kubernetes and scale the agent |
+| 7. Review and cleanup | Group review | Understand the limitations, stop the lab, and identify next steps |
 
 Here is the configuration journey:
 
@@ -151,9 +150,9 @@ agent: FastAPI + Pydantic AI
 
 **Why two kinds of address?** `localhost` means "this machine" from the caller's point of view. Inside the agent container, `localhost` would refer to that container, not the Ollama container. Compose provides service names such as `ollama` and `redis`; Kubernetes provides similar service DNS names. Keep the supplied internal URLs as they are.
 
-## Before the workshop: prepare your laptop
+## Prepare your laptop
 
-**Goal:** finish the downloads and prove that one real model request works before the live session.
+**Goal:** finish the downloads and prove that one real model request works before beginning the exercises.
 
 Read [prerequisites.md](prerequisites.md) for installation links and the full hardware guidance.
 
@@ -170,7 +169,7 @@ You need:
 
 You do **not** need a native Python environment, a native Ollama installation, a GPU, or Kubernetes for Steps 1-5.
 
-Start your container runtime and wait until it reports that it is ready:
+Start your container runtime and wait until it reports that it is ready, then run these commands for verification:
 
 ```bash
 docker info
@@ -280,7 +279,7 @@ If downloads are impossible, use the [offline recovery path](#a-import-an-offlin
 
 ## Step 0: understand the problem
 
-**Live plan:** 10:25, 8 minutes. Primarily watch the presenters.
+**Format:** presenter-led introduction.
 
 **Goal:** understand why "the model answered" is only the beginning of an agent system.
 
@@ -334,7 +333,7 @@ If you use the hosted fallback, stopping Ollama does not take away your actual m
 
 ## Step 1: run an agent on local inference
 
-**Live plan:** 10:33, 12 minutes.
+**Format:** hands-on.
 
 **Goal:** get one complete browser-to-agent-to-local-model round trip working.
 
@@ -455,7 +454,7 @@ This is the smallest working system you will build on. If it cannot answer a rea
 
 ## Step 2: change the model API without changing the application
 
-**Live plan:** 10:45, 12 minutes.
+**Format:** hands-on.
 
 **Goal:** understand the difference between a model server and the API used to call it, and see a configuration-only change in action.
 
@@ -548,7 +547,7 @@ It demonstrates a portability boundary rather than a promise of universal compat
 
 ## Step 3: see inside the agent with OpenTelemetry and Grafana
 
-**Live plan:** 10:57, 18 minutes. This is the main guided exploration.
+**Format:** guided exploration and hands-on trace reading.
 
 **Goal:** replace guesswork about the agent's behavior with traces, metrics, and logs.
 
@@ -704,7 +703,7 @@ An agent can make several model and tool calls for one visible answer. An end-to
 
 ## Step 4: keep a conversation when the agent container is destroyed
 
-**Live plan:** 11:15, 10 minutes.
+**Format:** hands-on.
 
 **Goal:** separate disposable application compute from conversation state.
 
@@ -835,7 +834,7 @@ If conversation state lives only inside one agent process, replacing or scaling 
 
 ## Step 5: give the agent tools and follow a request across MCP
 
-**Live plan:** 11:25, 12 minutes.
+**Format:** hands-on with a guided cross-process trace.
 
 **Goal:** connect answers to actual data and see a single trace cross an application boundary.
 
@@ -975,13 +974,13 @@ MCP does not make a data source automatically current, an action automatically a
 
 ## Step 6: move the same application to Kubernetes
 
-**Live plan:** 11:37, 14 minutes. Presenter-led in the live workshop.
+**Format:** presenter-led by default, with optional self-paced instructions.
 
 **Goal:** see which deployment concepts change when the existing application images move from Compose to a cluster.
 
 ### 1. Decide whether to watch or run it yourself
 
-For the live session, watching is the normal attendee path. A presenter should have the cluster prepared in advance.
+Watching is the normal attendee path. A presenter should have the cluster prepared in advance.
 
 For a self-paced run, you additionally need:
 
@@ -1173,7 +1172,7 @@ It tests whether the application is coupled to its laptop runtime. Externalized 
 
 ## Step 7: review the lessons and clean up
 
-**Live plan:** 11:51, 9 minutes. The planned room handover requires finishing at noon.
+**Format:** group review and cleanup.
 
 ### 1. Review the four boundaries
 
@@ -1454,7 +1453,7 @@ If a clean container restart is necessary, use the all-profile `down` command fr
 
 This section is for someone delivering the workshop, not additional attendee prerequisites.
 
-### Before the event
+### Delivery checklist
 
 1. Run preflight and rehearse Steps 1-5 on every presenter laptop. Use the current repository rather than treating old planning output as a fresh test result.
 2. Decide whether attendees receive published workshop images, use local builds, or import USB bundles. The default prefix is local-only. See [README.md](README.md#running-this-workshop-yourself) and the [image publication workflow](.github/workflows/publish-images.yml).
@@ -1462,7 +1461,7 @@ This section is for someone delivering the workshop, not additional attendee pre
 4. Verify the bundled schedule against the event plan. It is a fixed demo snapshot, not a live agenda feed.
 5. Prewarm the presenter cluster and run one real cluster question before the room opens. Verify the Kubernetes context, ports 8081/3001, trace links, and three-replica demonstration.
 6. Bring a recovery plan: helpers, charger/power access, offline media, a pairing option, and a recorded demonstration if available.
-7. Allow time for room turnover. If behind, preserve the first working chat, the guided trace, the cross-process MCP trace, and the same-image deployment explanation. Optional experiments and repeated scaling requests can be shortened.
+7. Adjust optional depth to the audience, but preserve the first working chat, the guided trace, the cross-process MCP trace, and the same-image deployment explanation. Optional experiments and repeated scaling requests can be omitted.
 
 Example bundle export:
 
@@ -1489,7 +1488,7 @@ The lifecycle is implemented in [scripts/hosted-fallback.ps1](scripts/hosted-fal
 | `up` | Creates the named managed-compute model deployment and waits for it |
 | `status` | Reports the deployment state and endpoint |
 | `env` | Writes the private local hosted override for a smoke test |
-| `down` | Deletes that model deployment after the event |
+| `down` | Deletes that model deployment when it is no longer needed |
 
 The supplied configuration uses one A100 80 GB accelerator. Provisioning took around 15-20 minutes in the planning tests. The script's approximately USD 3.95/hour figure is a historical estimate, **not a current pricing guarantee**. Verify current availability and pricing. Billing can continue while an idle deployment exists.
 
@@ -1506,7 +1505,7 @@ $resourceGroup = "YOUR_RESOURCE_GROUP"
 
 Replace the example names, authenticate the Azure CLI to the intended subscription first, and keep the written key private. Send a real agent question to verify the deployment; merely creating it is not enough.
 
-After the session, using the same approved resource names:
+To remove the hosted fallback, use the same approved resource names:
 
 ```powershell
 .\scripts\hosted-fallback.ps1 down -Account $account -ResourceGroup $resourceGroup
@@ -1520,7 +1519,7 @@ Verify deletion in Azure, rotate any shared key, and remove private override fil
 
 - After downloading `qwen3:4b-instruct`, change `MODEL` in your untracked `.env` to `openai-responses:qwen3:4b-instruct`, rerun Compose, and compare actual tool traces and token usage. A hosted override would take precedence.
 - Change `CAPTURE_CONTENT` in `.env` to `false` and inspect new spans. Compare observability with and without conversation content.
-- Read how `REASONING=off` changes model settings, then compare latency and output tokens in a controlled, non-sensitive question. CPU reasoning can be slow; this is not needed for the live workshop.
+- Read how `REASONING=off` changes model settings, then compare latency and output tokens in a controlled, non-sensitive question. CPU reasoning can be slow; this is not needed for the core path.
 - Consider another OTLP-compatible observability backend. Compose explicitly sets the export endpoint, so changing only an arbitrary new `.env` variable will not override that service setting; deployment wiring would also need attention.
 - Study an alternative Redis-protocol store such as Valkey. Protocol compatibility is not on-disk compatibility: do not point it at an existing Redis 8 data volume without a supported migration plan.
 - Design an evaluation that checks whether an actual tool was called, not merely whether the generated answer sounded plausible.
@@ -1548,7 +1547,7 @@ Verify deletion in Azure, rotate any shared key, and remove private override fil
 
 ### Planning basis
 
-The event timing and learning progression in this guide follow the accepted workshop proposal, the v4 workshop outline, the event prerequisites, and the existing planning run of show supplied for AGNTCon + MCPCon 2026. The current repository determines the commands, framework, configuration, storage behavior, and limitations described here.
+The learning progression in this guide follows the accepted workshop proposal, the v4 workshop outline, and the event prerequisites supplied for AGNTCon + MCPCon 2026. The current repository determines the commands, framework, configuration, storage behavior, and limitations described here.
 
 Planning measurements are context, not fresh results from your machine. Earlier proposals and intermediate outlines describe alternatives that are not required by this implementation: the current framework is Pydantic AI, vLLM is a future serving-tier discussion, and the Kubernetes lab retains the all-in-one LGTM image.
 

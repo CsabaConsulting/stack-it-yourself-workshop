@@ -1,0 +1,563 @@
+{
+  "traceID": "b533a5fa52adaad2ebfe860ec9ea8af",
+  "rootServiceName": "agent",
+  "rootTraceName": "POST /chat",
+  "startTimeUnixNano": "1792779811541545219",
+  "startTimeUTC": "2026-10-23T18:23:31.541545+00:00",
+  "durationMs": 1382,
+  "spanSets": [
+    {
+      "spans": [
+        {
+          "spanID": "e805d417c7e75b64",
+          "startTimeUnixNano": "1792779811541996382",
+          "durationNanos": "49483"
+        },
+        {
+          "spanID": "355662fef485c49c",
+          "startTimeUnixNano": "1792779812923350918",
+          "durationNanos": "33252"
+        },
+        {
+          "spanID": "4882f82a863f7690",
+          "startTimeUnixNano": "1792779812923515789",
+          "durationNanos": "14177"
+        }
+      ],
+      "matched": 7
+    }
+  ],
+  "batches": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "3bd59084-4a69-4682-ab55-8ef7764f7dd0"
+            }
+          },
+          {
+            "key": "telemetry.auto.version",
+            "value": {
+              "stringValue": "0.66b0"
+            }
+          },
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.45.0"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "agent"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "opentelemetry.instrumentation.fastapi",
+            "version": "0.66b0"
+          },
+          "spans": [
+            {
+              "traceId": "C1M6X6Uq2q0uv+hg7J6orw==",
+              "spanId": "6AXUF8fnW2Q=",
+              "parentSpanId": "X/OtleyMy0g=",
+              "name": "POST /chat http receive",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792779811541996382",
+              "endTimeUnixNano": "1792779811542045865",
+              "attributes": [
+                {
+                  "key": "asgi.event.type",
+                  "value": {
+                    "stringValue": "http.request"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "0b533a5fa52adaad2ebfe860ec9ea8af",
+              "spanIdHex": "e805d417c7e75b64",
+              "parentSpanIdHex": "5ff3ad95ec8ccb48"
+            },
+            {
+              "traceId": "C1M6X6Uq2q0uv+hg7J6orw==",
+              "spanId": "NVZi/vSFxJw=",
+              "parentSpanId": "X/OtleyMy0g=",
+              "name": "POST /chat http send",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792779812923350918",
+              "endTimeUnixNano": "1792779812923384170",
+              "attributes": [
+                {
+                  "key": "asgi.event.type",
+                  "value": {
+                    "stringValue": "http.response.start"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "0b533a5fa52adaad2ebfe860ec9ea8af",
+              "spanIdHex": "355662fef485c49c",
+              "parentSpanIdHex": "5ff3ad95ec8ccb48"
+            },
+            {
+              "traceId": "C1M6X6Uq2q0uv+hg7J6orw==",
+              "spanId": "SIL4KoY/dpA=",
+              "parentSpanId": "X/OtleyMy0g=",
+              "name": "POST /chat http send",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792779812923515789",
+              "endTimeUnixNano": "1792779812923529966",
+              "attributes": [
+                {
+                  "key": "asgi.event.type",
+                  "value": {
+                    "stringValue": "http.response.body"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "0b533a5fa52adaad2ebfe860ec9ea8af",
+              "spanIdHex": "4882f82a863f7690",
+              "parentSpanIdHex": "5ff3ad95ec8ccb48"
+            },
+            {
+              "traceId": "C1M6X6Uq2q0uv+hg7J6orw==",
+              "spanId": "X/OtleyMy0g=",
+              "name": "POST /chat",
+              "kind": "SPAN_KIND_SERVER",
+              "startTimeUnixNano": "1792779811541545219",
+              "endTimeUnixNano": "1792779812923589568",
+              "attributes": [
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "http"
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "172.18.0.4:8000"
+                  }
+                },
+                {
+                  "key": "net.host.port",
+                  "value": {
+                    "intValue": "8000"
+                  }
+                },
+                {
+                  "key": "http.flavor",
+                  "value": {
+                    "stringValue": "1.1"
+                  }
+                },
+                {
+                  "key": "http.target",
+                  "value": {
+                    "stringValue": "/chat"
+                  }
+                },
+                {
+                  "key": "http.server_name",
+                  "value": {
+                    "stringValue": "localhost:8000"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36"
+                  }
+                },
+                {
+                  "key": "net.peer.ip",
+                  "value": {
+                    "stringValue": "172.18.0.1"
+                  }
+                },
+                {
+                  "key": "net.peer.port",
+                  "value": {
+                    "intValue": "43844"
+                  }
+                },
+                {
+                  "key": "http.route",
+                  "value": {
+                    "stringValue": "/chat"
+                  }
+                },
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "http://localhost:8000/chat"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "0b533a5fa52adaad2ebfe860ec9ea8af",
+              "spanIdHex": "5ff3ad95ec8ccb48"
+            }
+          ]
+        },
+        {
+          "scope": {
+            "name": "opentelemetry.instrumentation.httpx",
+            "version": "0.66b0"
+          },
+          "spans": [
+            {
+              "traceId": "C1M6X6Uq2q0uv+hg7J6orw==",
+              "spanId": "q79AapJFS04=",
+              "parentSpanId": "hTqXhKIyTTE=",
+              "name": "POST",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1792779811554956059",
+              "endTimeUnixNano": "1792779812919210057",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "http://ollama:11434/v1/responses"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "0b533a5fa52adaad2ebfe860ec9ea8af",
+              "spanIdHex": "abbf406a92454b4e",
+              "parentSpanIdHex": "853a9784a2324d31"
+            }
+          ]
+        },
+        {
+          "scope": {
+            "name": "pydantic-ai",
+            "version": "2.51.0"
+          },
+          "spans": [
+            {
+              "traceId": "C1M6X6Uq2q0uv+hg7J6orw==",
+              "spanId": "hTqXhKIyTTE=",
+              "parentSpanId": "TMRPQsFAgcA=",
+              "name": "chat qwen3:1.7b",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1792779811549684382",
+              "endTimeUnixNano": "1792779812921214573",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.system",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "server.port",
+                  "value": {
+                    "intValue": "11434"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "qwen3:1.7b"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "conference-assistant"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.call.id",
+                  "value": {
+                    "stringValue": "01a16a00-fad6-77bc-b461-43b35a1659be"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "1cf5420451e1"
+                  }
+                },
+                {
+                  "key": "model_request_parameters",
+                  "value": {
+                    "stringValue": "{\"function_tools\":[],\"native_tools\":[],\"tool_visibility\":{},\"revealed_tool_names\":[],\"deferred_capability_ids\":[],\"output_mode\":\"text\",\"output_object\":null,\"output_tools\":[],\"prompted_output_template\":null,\"allow_text_output\":true,\"allow_image_output\":false,\"instruction_parts\":[{\"content\":\"You are the assistant for AGNTCon + MCPCon North America 2026 in San Jose. Answer in one to three sentences.\",\"dynamic\":false,\"name\":null,\"id\":\"agent\",\"part_kind\":\"instruction\"}],\"thinking\":null}"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"What workshops are on Thrusday?\"}]},{\"role\":\"assistant\",\"parts\":[{\"type\":\"text\",\"content\":\"Thursday's schedule includes workshops on AI ethics, sustainable technologies, and data privacy.\"}],\"finish_reason\":\"stop\"},{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"And how about Friday?\"}]}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\":\"assistant\",\"parts\":[{\"type\":\"text\",\"content\":\"Friday's workshops focus on climate innovation, AI governance, and global collaboration.\"}],\"finish_reason\":\"stop\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.system_instructions",
+                  "value": {
+                    "stringValue": "[{\"type\":\"text\",\"content\":\"You are the assistant for AGNTCon + MCPCon North America 2026 in San Jose. Answer in one to three sentences.\"}]"
+                  }
+                },
+                {
+                  "key": "logfire.json_schema",
+                  "value": {
+                    "stringValue": "{\"type\":\"object\",\"properties\":{\"gen_ai.input.messages\":{\"type\":\"array\"},\"gen_ai.output.messages\":{\"type\":\"array\"},\"gen_ai.system_instructions\":{\"type\":\"array\"},\"model_request_parameters\":{\"type\":\"object\"}}}"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "89"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "16"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "45"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.details.reasoning_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.details.cache_read_tokens",
+                  "value": {
+                    "intValue": "45"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "qwen3:1.7b"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.id",
+                  "value": {
+                    "stringValue": "resp_340908"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "stop"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "server.address",
+                  "value": {
+                    "stringValue": "ollama"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "0b533a5fa52adaad2ebfe860ec9ea8af",
+              "spanIdHex": "853a9784a2324d31",
+              "parentSpanIdHex": "4cc44f42c14081c0"
+            },
+            {
+              "traceId": "C1M6X6Uq2q0uv+hg7J6orw==",
+              "spanId": "TMRPQsFAgcA=",
+              "parentSpanId": "X/OtleyMy0g=",
+              "name": "invoke_agent conference-assistant",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792779811546239035",
+              "endTimeUnixNano": "1792779812922772856",
+              "attributes": [
+                {
+                  "key": "model_name",
+                  "value": {
+                    "stringValue": "qwen3:1.7b"
+                  }
+                },
+                {
+                  "key": "agent_name",
+                  "value": {
+                    "stringValue": "conference-assistant"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "conference-assistant"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.call.id",
+                  "value": {
+                    "stringValue": "01a16a00-fad6-77bc-b461-43b35a1659be"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "1cf5420451e1"
+                  }
+                },
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "logfire.msg",
+                  "value": {
+                    "stringValue": "conference-assistant run"
+                  }
+                },
+                {
+                  "key": "final_result",
+                  "value": {
+                    "stringValue": "Friday's workshops focus on climate innovation, AI governance, and global collaboration."
+                  }
+                },
+                {
+                  "key": "gen_ai.aggregated_usage.input_tokens",
+                  "value": {
+                    "intValue": "89"
+                  }
+                },
+                {
+                  "key": "gen_ai.aggregated_usage.output_tokens",
+                  "value": {
+                    "intValue": "16"
+                  }
+                },
+                {
+                  "key": "gen_ai.aggregated_usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "45"
+                  }
+                },
+                {
+                  "key": "gen_ai.aggregated_usage.details.reasoning_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.aggregated_usage.details.cache_read_tokens",
+                  "value": {
+                    "intValue": "45"
+                  }
+                },
+                {
+                  "key": "pydantic_ai.all_messages",
+                  "value": {
+                    "stringValue": "[{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"What workshops are on Thrusday?\"}]},{\"role\":\"assistant\",\"parts\":[{\"type\":\"text\",\"content\":\"Thursday's schedule includes workshops on AI ethics, sustainable technologies, and data privacy.\"}],\"finish_reason\":\"stop\"},{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"And how about Friday?\"}]},{\"role\":\"assistant\",\"parts\":[{\"type\":\"text\",\"content\":\"Friday's workshops focus on climate innovation, AI governance, and global collaboration.\"}],\"finish_reason\":\"stop\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.system_instructions",
+                  "value": {
+                    "stringValue": "[{\"type\":\"text\",\"content\":\"You are the assistant for AGNTCon + MCPCon North America 2026 in San Jose. Answer in one to three sentences.\"}]"
+                  }
+                },
+                {
+                  "key": "pydantic_ai.new_message_index",
+                  "value": {
+                    "intValue": "2"
+                  }
+                },
+                {
+                  "key": "logfire.json_schema",
+                  "value": {
+                    "stringValue": "{\"type\":\"object\",\"properties\":{\"pydantic_ai.all_messages\":{\"type\":\"array\"},\"gen_ai.system_instructions\":{\"type\":\"array\"},\"pydantic_ai.new_message_index\":{},\"final_result\":{\"type\":\"object\"}}}"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "0b533a5fa52adaad2ebfe860ec9ea8af",
+              "spanIdHex": "4cc44f42c14081c0",
+              "parentSpanIdHex": "5ff3ad95ec8ccb48"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

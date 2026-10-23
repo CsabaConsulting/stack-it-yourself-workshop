@@ -1,0 +1,1428 @@
+{
+  "traceID": "65155187ce298d26ef3134447536ba2e",
+  "rootServiceName": "agent",
+  "rootTraceName": "POST /chat",
+  "startTimeUnixNano": "1792783296595438530",
+  "startTimeUTC": "2026-10-23T19:21:36.595438+00:00",
+  "durationMs": 9486,
+  "spanSets": [
+    {
+      "spans": [
+        {
+          "spanID": "644c69fe095a74a1",
+          "startTimeUnixNano": "1792783296631657167",
+          "durationNanos": "891931"
+        },
+        {
+          "spanID": "0517165975c806fe",
+          "startTimeUnixNano": "1792783296639433331",
+          "durationNanos": "855031"
+        },
+        {
+          "spanID": "44602fdd3b8eb501",
+          "startTimeUnixNano": "1792783301149788701",
+          "durationNanos": "1148477"
+        }
+      ],
+      "matched": 23
+    }
+  ],
+  "batches": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "41e743f4-c356-466f-a966-5376474bc1d1"
+            }
+          },
+          {
+            "key": "telemetry.auto.version",
+            "value": {
+              "stringValue": "0.66b0"
+            }
+          },
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.45.0"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "mcp-server"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "fastmcp"
+          },
+          "spans": [
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "ZExp/gladKE=",
+              "parentSpanId": "9JOp6MsS6CQ=",
+              "name": "server/discover",
+              "kind": "SPAN_KIND_SERVER",
+              "startTimeUnixNano": "1792783296631657167",
+              "endTimeUnixNano": "1792783296632549098",
+              "attributes": [
+                {
+                  "key": "fastmcp.span.seam",
+                  "value": {
+                    "boolValue": true
+                  }
+                },
+                {
+                  "key": "mcp.method.name",
+                  "value": {
+                    "stringValue": "server/discover"
+                  }
+                },
+                {
+                  "key": "fastmcp.server.name",
+                  "value": {
+                    "stringValue": "agntcon-schedule"
+                  }
+                },
+                {
+                  "key": "mcp.protocol.version",
+                  "value": {
+                    "stringValue": "2026-07-28"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "644c69fe095a74a1",
+              "parentSpanIdHex": "f493a9e8cb12e824"
+            },
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "BRcWWXXIBv4=",
+              "parentSpanId": "F/+JBUI7VIo=",
+              "name": "tools/list",
+              "kind": "SPAN_KIND_SERVER",
+              "startTimeUnixNano": "1792783296639433331",
+              "endTimeUnixNano": "1792783296640288362",
+              "attributes": [
+                {
+                  "key": "fastmcp.span.seam",
+                  "value": {
+                    "boolValue": true
+                  }
+                },
+                {
+                  "key": "mcp.method.name",
+                  "value": {
+                    "stringValue": "tools/list"
+                  }
+                },
+                {
+                  "key": "fastmcp.server.name",
+                  "value": {
+                    "stringValue": "agntcon-schedule"
+                  }
+                },
+                {
+                  "key": "fastmcp.component.type",
+                  "value": {
+                    "stringValue": "tool"
+                  }
+                },
+                {
+                  "key": "fastmcp.component.key",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "mcp.protocol.version",
+                  "value": {
+                    "stringValue": "2026-07-28"
+                  }
+                },
+                {
+                  "key": "mcp.session.id",
+                  "value": {
+                    "stringValue": "c134019e-0fa9-40b4-94db-505eb51c220a"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "0517165975c806fe",
+              "parentSpanIdHex": "17ff8905423b548a"
+            },
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "RGAv3TuOtQE=",
+              "parentSpanId": "CXm92/c7IFM=",
+              "name": "tools/call search_workshops",
+              "kind": "SPAN_KIND_SERVER",
+              "startTimeUnixNano": "1792783301149788701",
+              "endTimeUnixNano": "1792783301150937178",
+              "attributes": [
+                {
+                  "key": "fastmcp.span.seam",
+                  "value": {
+                    "boolValue": true
+                  }
+                },
+                {
+                  "key": "mcp.method.name",
+                  "value": {
+                    "stringValue": "tools/call"
+                  }
+                },
+                {
+                  "key": "fastmcp.server.name",
+                  "value": {
+                    "stringValue": "agntcon-schedule"
+                  }
+                },
+                {
+                  "key": "mcp.protocol.version",
+                  "value": {
+                    "stringValue": "2026-07-28"
+                  }
+                },
+                {
+                  "key": "mcp.session.id",
+                  "value": {
+                    "stringValue": "64f549e5-b332-4a42-8ffd-2521e08c8d6a"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "search_workshops"
+                  }
+                },
+                {
+                  "key": "fastmcp.component.key",
+                  "value": {
+                    "stringValue": "tool:search_workshops@"
+                  }
+                },
+                {
+                  "key": "fastmcp.component.type",
+                  "value": {
+                    "stringValue": "tool"
+                  }
+                },
+                {
+                  "key": "fastmcp.provider.type",
+                  "value": {
+                    "stringValue": "LocalProvider"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "44602fdd3b8eb501",
+              "parentSpanIdHex": "0979bddbf73b2053"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "75102184-15f5-4dd0-b9d9-5b9a64dc1fc0"
+            }
+          },
+          {
+            "key": "telemetry.auto.version",
+            "value": {
+              "stringValue": "0.66b0"
+            }
+          },
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.45.0"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "agent"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "opentelemetry.instrumentation.fastapi",
+            "version": "0.66b0"
+          },
+          "spans": [
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "QZA9eFFt/e8=",
+              "parentSpanId": "YFz8WPXiqt0=",
+              "name": "POST /chat http receive",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792783296596015674",
+              "endTimeUnixNano": "1792783296596071700",
+              "attributes": [
+                {
+                  "key": "asgi.event.type",
+                  "value": {
+                    "stringValue": "http.request"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "41903d78516dfdef",
+              "parentSpanIdHex": "605cfc58f5e2aadd"
+            },
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "uMoXBkzvoF4=",
+              "parentSpanId": "YFz8WPXiqt0=",
+              "name": "POST /chat http send",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792783306081535724",
+              "endTimeUnixNano": "1792783306081608262",
+              "attributes": [
+                {
+                  "key": "asgi.event.type",
+                  "value": {
+                    "stringValue": "http.response.start"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "b8ca17064cefa05e",
+              "parentSpanIdHex": "605cfc58f5e2aadd"
+            },
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "vgk0Vn0zInI=",
+              "parentSpanId": "YFz8WPXiqt0=",
+              "name": "POST /chat http send",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792783306081894855",
+              "endTimeUnixNano": "1792783306081929020",
+              "attributes": [
+                {
+                  "key": "asgi.event.type",
+                  "value": {
+                    "stringValue": "http.response.body"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "be0934567d332272",
+              "parentSpanIdHex": "605cfc58f5e2aadd"
+            },
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "YFz8WPXiqt0=",
+              "name": "POST /chat",
+              "kind": "SPAN_KIND_SERVER",
+              "startTimeUnixNano": "1792783296595438530",
+              "endTimeUnixNano": "1792783306082041814",
+              "attributes": [
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "http"
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "172.18.0.6:8000"
+                  }
+                },
+                {
+                  "key": "net.host.port",
+                  "value": {
+                    "intValue": "8000"
+                  }
+                },
+                {
+                  "key": "http.flavor",
+                  "value": {
+                    "stringValue": "1.1"
+                  }
+                },
+                {
+                  "key": "http.target",
+                  "value": {
+                    "stringValue": "/chat"
+                  }
+                },
+                {
+                  "key": "http.server_name",
+                  "value": {
+                    "stringValue": "localhost:8000"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36"
+                  }
+                },
+                {
+                  "key": "net.peer.ip",
+                  "value": {
+                    "stringValue": "172.18.0.1"
+                  }
+                },
+                {
+                  "key": "net.peer.port",
+                  "value": {
+                    "intValue": "56580"
+                  }
+                },
+                {
+                  "key": "http.route",
+                  "value": {
+                    "stringValue": "/chat"
+                  }
+                },
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "http://localhost:8000/chat"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "605cfc58f5e2aadd"
+            }
+          ]
+        },
+        {
+          "scope": {
+            "name": "opentelemetry.instrumentation.redis",
+            "version": "0.66b0"
+          },
+          "spans": [
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "KwqMGQYU1Lo=",
+              "parentSpanId": "YFz8WPXiqt0=",
+              "name": "LRANGE",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1792783296596612085",
+              "endTimeUnixNano": "1792783296597578908",
+              "attributes": [
+                {
+                  "key": "db.statement",
+                  "value": {
+                    "stringValue": "LRANGE ? ? ?"
+                  }
+                },
+                {
+                  "key": "db.redis.args_length",
+                  "value": {
+                    "intValue": "4"
+                  }
+                },
+                {
+                  "key": "db.system",
+                  "value": {
+                    "stringValue": "redis"
+                  }
+                },
+                {
+                  "key": "db.redis.database_index",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "net.peer.name",
+                  "value": {
+                    "stringValue": "redis"
+                  }
+                },
+                {
+                  "key": "net.peer.port",
+                  "value": {
+                    "intValue": "6379"
+                  }
+                },
+                {
+                  "key": "net.transport",
+                  "value": {
+                    "stringValue": "ip_tcp"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "2b0a8c190614d4ba",
+              "parentSpanIdHex": "605cfc58f5e2aadd"
+            },
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "3KkVfG70c5c=",
+              "parentSpanId": "YFz8WPXiqt0=",
+              "name": "RPUSH LTRIM EXPIRE",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1792783306073613292",
+              "endTimeUnixNano": "1792783306080602695",
+              "attributes": [
+                {
+                  "key": "db.statement",
+                  "value": {
+                    "stringValue": "RPUSH ? ?\nLTRIM ? ? ?\nEXPIRE ? ?"
+                  }
+                },
+                {
+                  "key": "db.redis.pipeline_length",
+                  "value": {
+                    "intValue": "3"
+                  }
+                },
+                {
+                  "key": "db.system",
+                  "value": {
+                    "stringValue": "redis"
+                  }
+                },
+                {
+                  "key": "db.redis.database_index",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "net.peer.name",
+                  "value": {
+                    "stringValue": "redis"
+                  }
+                },
+                {
+                  "key": "net.peer.port",
+                  "value": {
+                    "intValue": "6379"
+                  }
+                },
+                {
+                  "key": "net.transport",
+                  "value": {
+                    "stringValue": "ip_tcp"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "dca9157c6ef47397",
+              "parentSpanIdHex": "605cfc58f5e2aadd"
+            }
+          ]
+        },
+        {
+          "scope": {
+            "name": "opentelemetry.instrumentation.httpx",
+            "version": "0.66b0"
+          },
+          "spans": [
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "3r/gg66+Jfk=",
+              "parentSpanId": "9JOp6MsS6CQ=",
+              "name": "POST",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1792783296628269452",
+              "endTimeUnixNano": "1792783296633913876",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "http://mcp-server:8001/mcp"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "debfe083aebe25f9",
+              "parentSpanIdHex": "f493a9e8cb12e824"
+            },
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "MLX4RSHFu+8=",
+              "parentSpanId": "F/+JBUI7VIo=",
+              "name": "POST",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1792783296638018579",
+              "endTimeUnixNano": "1792783296641669371",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "http://mcp-server:8001/mcp"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "30b5f84521c5bbef",
+              "parentSpanIdHex": "17ff8905423b548a"
+            },
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "GgS+iP1hfRE=",
+              "parentSpanId": "s/YQ377lZsI=",
+              "name": "POST",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1792783296666163386",
+              "endTimeUnixNano": "1792783301142217184",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "http://ollama:11434/v1/responses"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "1a04be88fd617d11",
+              "parentSpanIdHex": "b3f610dfbee566c2"
+            },
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "9QnDG2pCCA0=",
+              "parentSpanId": "CXm92/c7IFM=",
+              "name": "POST",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1792783301147345117",
+              "endTimeUnixNano": "1792783301151695336",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "http://mcp-server:8001/mcp"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "f509c31b6a42080d",
+              "parentSpanIdHex": "0979bddbf73b2053"
+            },
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "SgRAQS6LuzQ=",
+              "parentSpanId": "oTcKLeBHS9w=",
+              "name": "POST",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1792783301175792929",
+              "endTimeUnixNano": "1792783306061180879",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "http://ollama:11434/v1/responses"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "4a0440412e8bbb34",
+              "parentSpanIdHex": "a1370a2de0474bdc"
+            }
+          ]
+        },
+        {
+          "scope": {
+            "name": "mcp-python-sdk"
+          },
+          "spans": [
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "9JOp6MsS6CQ=",
+              "parentSpanId": "wdNHasIJ3F8=",
+              "name": "MCP send server/discover",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1792783296627376189",
+              "endTimeUnixNano": "1792783296634868315",
+              "attributes": [
+                {
+                  "key": "mcp.method.name",
+                  "value": {
+                    "stringValue": "server/discover"
+                  }
+                },
+                {
+                  "key": "jsonrpc.request.id",
+                  "value": {
+                    "stringValue": "1"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "f493a9e8cb12e824",
+              "parentSpanIdHex": "c1d3476ac209dc5f"
+            },
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "F/+JBUI7VIo=",
+              "parentSpanId": "FYtqu6zVsdw=",
+              "name": "MCP send tools/list",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1792783296637231887",
+              "endTimeUnixNano": "1792783296643355899",
+              "attributes": [
+                {
+                  "key": "mcp.method.name",
+                  "value": {
+                    "stringValue": "tools/list"
+                  }
+                },
+                {
+                  "key": "jsonrpc.request.id",
+                  "value": {
+                    "stringValue": "2"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "17ff8905423b548a",
+              "parentSpanIdHex": "158b6abbacd5b1dc"
+            },
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "CXm92/c7IFM=",
+              "parentSpanId": "FRivZrR4F/s=",
+              "name": "MCP send tools/call search_workshops",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1792783301146626485",
+              "endTimeUnixNano": "1792783301152546810",
+              "attributes": [
+                {
+                  "key": "mcp.method.name",
+                  "value": {
+                    "stringValue": "tools/call"
+                  }
+                },
+                {
+                  "key": "jsonrpc.request.id",
+                  "value": {
+                    "stringValue": "3"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "0979bddbf73b2053",
+              "parentSpanIdHex": "1518af66b47817fb"
+            }
+          ]
+        },
+        {
+          "scope": {
+            "name": "fastmcp"
+          },
+          "spans": [
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "FYtqu6zVsdw=",
+              "parentSpanId": "wdNHasIJ3F8=",
+              "name": "tools/list",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1792783296637053238",
+              "endTimeUnixNano": "1792783296644003227",
+              "attributes": [
+                {
+                  "key": "mcp.method.name",
+                  "value": {
+                    "stringValue": "tools/list"
+                  }
+                },
+                {
+                  "key": "fastmcp.component.key",
+                  "value": {
+                    "stringValue": ""
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "158b6abbacd5b1dc",
+              "parentSpanIdHex": "c1d3476ac209dc5f"
+            },
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "FRivZrR4F/s=",
+              "parentSpanId": "rXpwsGYdG5M=",
+              "name": "tools/call search_workshops",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1792783301146389936",
+              "endTimeUnixNano": "1792783301155006304",
+              "attributes": [
+                {
+                  "key": "mcp.method.name",
+                  "value": {
+                    "stringValue": "tools/call"
+                  }
+                },
+                {
+                  "key": "fastmcp.component.key",
+                  "value": {
+                    "stringValue": "search_workshops"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "search_workshops"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "1518af66b47817fb",
+              "parentSpanIdHex": "ad7a70b0661d1b93"
+            }
+          ]
+        },
+        {
+          "scope": {
+            "name": "pydantic-ai",
+            "version": "2.51.0"
+          },
+          "spans": [
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "s/YQ377lZsI=",
+              "parentSpanId": "wdNHasIJ3F8=",
+              "name": "chat qwen3:1.7b",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1792783296646843733",
+              "endTimeUnixNano": "1792783301144595854",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.system",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "server.port",
+                  "value": {
+                    "intValue": "11434"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "qwen3:1.7b"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "conference-assistant"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.call.id",
+                  "value": {
+                    "stringValue": "01a16a36-2857-7674-b888-7e3194fb6909"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "916a39739422"
+                  }
+                },
+                {
+                  "key": "model_request_parameters",
+                  "value": {
+                    "stringValue": "{\"function_tools\":[{\"name\":\"current_time\",\"parameters_json_schema\":{\"additionalProperties\":false,\"properties\":{\"city\":{\"default\":\"San Jose\",\"description\":\"One of San Jose, Seattle, New York, London, Paris, Tokyo, Sydney or UTC.\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":\"Get the current local date and time in a city.\",\"outer_typed_dict_key\":null,\"strict\":false,\"sequential\":false,\"kind\":\"function\",\"metadata\":null,\"timeout\":null,\"defer_loading\":false,\"unless_native\":null,\"with_native\":null,\"tool_kind\":null,\"return_schema\":null,\"include_return_schema\":null,\"toolset_id\":\"<agent>\",\"capability_id\":null},{\"name\":\"list_workshops\",\"parameters_json_schema\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"day\":{\"type\":\"string\",\"description\":\"The conference day, e.g. \\\"2026-10-22\\\" (Thursday) or \\\"2026-10-23\\\" (Friday).\"}},\"required\":[\"day\"]},\"description\":\"List the hands-on workshops on one conference day, in time order.\",\"outer_typed_dict_key\":null,\"strict\":true,\"sequential\":false,\"kind\":\"function\",\"metadata\":{\"meta\":{\"fastmcp\":{\"tags\":[]}},\"annotations\":null,\"task\":false},\"timeout\":null,\"defer_loading\":false,\"unless_native\":null,\"with_native\":null,\"tool_kind\":null,\"return_schema\":null,\"include_return_schema\":null,\"toolset_id\":null,\"capability_id\":null},{\"name\":\"search_workshops\",\"parameters_json_schema\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"keyword\":{\"type\":\"string\",\"description\":\"A single word or short phrase to search for.\"}},\"required\":[\"keyword\"]},\"description\":\"Find workshops whose title or summary mentions a keyword, e.g. \\\"security\\\", \\\"gateway\\\", \\\"MCP\\\" or \\\"Kubernetes\\\".\",\"outer_typed_dict_key\":null,\"strict\":true,\"sequential\":false,\"kind\":\"function\",\"metadata\":{\"meta\":{\"fastmcp\":{\"tags\":[]}},\"annotations\":null,\"task\":false},\"timeout\":null,\"defer_loading\":false,\"unless_native\":null,\"with_native\":null,\"tool_kind\":null,\"return_schema\":null,\"include_return_schema\":null,\"toolset_id\":null,\"capability_id\":null}],\"native_tools\":[],\"tool_visibility\":{\"current_time\":\"visible\",\"lis"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.definitions",
+                  "value": {
+                    "stringValue": "[{\"type\":\"function\",\"name\":\"current_time\",\"description\":\"Get the current local date and time in a city.\",\"parameters\":{\"additionalProperties\":false,\"properties\":{\"city\":{\"default\":\"San Jose\",\"description\":\"One of San Jose, Seattle, New York, London, Paris, Tokyo, Sydney or UTC.\",\"type\":\"string\"}},\"type\":\"object\"}},{\"type\":\"function\",\"name\":\"list_workshops\",\"description\":\"List the hands-on workshops on one conference day, in time order.\",\"parameters\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"day\":{\"type\":\"string\",\"description\":\"The conference day, e.g. \\\"2026-10-22\\\" (Thursday) or \\\"2026-10-23\\\" (Friday).\"}},\"required\":[\"day\"]}},{\"type\":\"function\",\"name\":\"search_workshops\",\"description\":\"Find workshops whose title or summary mentions a keyword, e.g. \\\"security\\\", \\\"gateway\\\", \\\"MCP\\\" or \\\"Kubernetes\\\".\",\"parameters\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"keyword\":{\"type\":\"string\",\"description\":\"A single word or short phrase to search for.\"}},\"required\":[\"keyword\"]}}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"How many workshops happening throughout the whole conference?\"}]},{\"role\":\"assistant\",\"parts\":[{\"type\":\"text\",\"content\":\"The number of workshops happening throughout the whole conference cannot be determined from the given information.\"}],\"finish_reason\":\"stop\"},{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"Hint: check today and yesterday\"}]},{\"role\":\"assistant\",\"parts\":[{\"type\":\"tool_call\",\"id\":\"call_6vqyha47\",\"name\":\"current_time\",\"arguments\":\"{\\\"city\\\":\\\"San Jose\\\"}\"},{\"type\":\"tool_call\",\"id\":\"call_hbur5yrr\",\"name\":\"list_workshops\",\"arguments\":\"{\\\"day\\\":\\\"2026-10-22\\\"}\"},{\"type\":\"tool_call\",\"id\":\"call_cby6qwih\",\"name\":\"list_workshops\",\"arguments\":\"{\\\"day\\\":\\\"2026-10-21\\\"}\"}],\"finish_reason\":\"stop\"},{\"role\":\"user\",\"parts\":[{\"type\":\"tool_call_response\",\"id\":\"call_6vqyha47\",\"name\":\"current_time\",\"result\":\"Friday 23 October 2026, 12:18 in San Jose\"},{\"type\":\"tool_call_response\",\"id\":\"call_hbur5yrr\",\"name\":\"list_workshops\",\"result\":[{\"title\":\"Hands-on A2A: Service Discovery and Multi-Agent Delegation\",\"day\":\"2026-10-22\",\"weekday\":\"Thursday\",\"start\":\"10:35\",\"end\":\"12:10\",\"room\":\"LL21 DEF\",\"summary\":\"This 75-minute interactive workshop provides a hands-on environment for engineers to explore agent-to-agent (A2A) protocols through practical execution rather than product pitches.\"},{\"title\":\"The Buzz-Word Is Collaboration\",\"day\":\"2026-10-22\",\"weekday\":\"Thursday\",\"start\":\"14:20\",\"end\":\"15:55\",\"room\":\"LL21 DEF\",\"summary\":\"Put agents where the work is: a shared, channel-driven workspace where people and agents share conversations, code and reviews.\"},{\"title\":\"Keep Infrastructure Out of Your AI Agents and MCP Servers\",\"day\":\"2026-10-22\",\"weekday\":\"Thursday\",\"start\":\"16:05\",\"end\":\"17:40\",\"room\":\"LL21 DEF\",\"summary\":\"The agent gateway pattern: secure and federate MCP servers, route and fail over LLM traffic, enforce policy and observe agent traffic.\"}]},{\"type\":\"tool_call_response\",\"id\":\"call_cby6qwih\",\"name\":\"list_workshops\",\"result\":[{\"error\":\"Unknown day '2026-10-21'"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\":\"assistant\",\"parts\":[{\"type\":\"tool_call\",\"id\":\"call_xxz6wv2e\",\"name\":\"search_workshops\",\"arguments\":\"{\\\"keyword\\\":\\\"LGTM\\\"}\"}],\"finish_reason\":\"stop\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.system_instructions",
+                  "value": {
+                    "stringValue": "[{\"type\":\"text\",\"content\":\"You are the assistant for AGNTCon + MCPCon North America 2026 in San Jose. You have tools for the workshop schedule and the current time. If a question is about workshops, sessions, rooms, days or the time, use a tool to get the facts first, then answer in one to three sentences using only what the tool returned. Never describe a tool call in your reply - just make it.\"}]"
+                  }
+                },
+                {
+                  "key": "logfire.json_schema",
+                  "value": {
+                    "stringValue": "{\"type\":\"object\",\"properties\":{\"gen_ai.input.messages\":{\"type\":\"array\"},\"gen_ai.output.messages\":{\"type\":\"array\"},\"gen_ai.system_instructions\":{\"type\":\"array\"},\"model_request_parameters\":{\"type\":\"object\"}}}"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1916"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "22"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1713"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.details.reasoning_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.details.cache_read_tokens",
+                  "value": {
+                    "intValue": "1713"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "qwen3:1.7b"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.id",
+                  "value": {
+                    "stringValue": "resp_721206"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "stop"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "server.address",
+                  "value": {
+                    "stringValue": "ollama"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "b3f610dfbee566c2",
+              "parentSpanIdHex": "c1d3476ac209dc5f"
+            },
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "rXpwsGYdG5M=",
+              "parentSpanId": "wdNHasIJ3F8=",
+              "name": "execute_tool search_workshops",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792783301146179788",
+              "endTimeUnixNano": "1792783301155182628",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "search_workshops"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call_xxz6wv2e"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.arguments",
+                  "value": {
+                    "stringValue": "{\"keyword\":\"LGTM\"}"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "conference-assistant"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.call.id",
+                  "value": {
+                    "stringValue": "01a16a36-2857-7674-b888-7e3194fb6909"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "916a39739422"
+                  }
+                },
+                {
+                  "key": "logfire.msg",
+                  "value": {
+                    "stringValue": "running tool: search_workshops"
+                  }
+                },
+                {
+                  "key": "logfire.json_schema",
+                  "value": {
+                    "stringValue": "{\"type\":\"object\",\"properties\":{\"gen_ai.tool.call.arguments\":{\"type\":\"object\"},\"gen_ai.tool.call.result\":{\"type\":\"object\"},\"gen_ai.tool.name\":{},\"gen_ai.tool.call.id\":{}}}"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.result",
+                  "value": {
+                    "stringValue": "[{\"title\":\"Stack It Yourself: Open Infrastructure for AI Agents, from Compose to Cluster\",\"day\":\"2026-10-23\",\"weekday\":\"Friday\",\"start\":\"10:55\",\"end\":\"12:30\",\"room\":\"LL21 DEF\",\"summary\":\"Build an agent on open inference, trace it with OpenTelemetry and the LGTM stack, keep history in Redis, and move it from Compose to Kubernetes.\"}]"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "ad7a70b0661d1b93",
+              "parentSpanIdHex": "c1d3476ac209dc5f"
+            },
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "oTcKLeBHS9w=",
+              "parentSpanId": "wdNHasIJ3F8=",
+              "name": "chat qwen3:1.7b",
+              "kind": "SPAN_KIND_CLIENT",
+              "startTimeUnixNano": "1792783301157445850",
+              "endTimeUnixNano": "1792783306065202945",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.system",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "server.port",
+                  "value": {
+                    "intValue": "11434"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "qwen3:1.7b"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "conference-assistant"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.call.id",
+                  "value": {
+                    "stringValue": "01a16a36-2857-7674-b888-7e3194fb6909"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "916a39739422"
+                  }
+                },
+                {
+                  "key": "model_request_parameters",
+                  "value": {
+                    "stringValue": "{\"function_tools\":[{\"name\":\"current_time\",\"parameters_json_schema\":{\"additionalProperties\":false,\"properties\":{\"city\":{\"default\":\"San Jose\",\"description\":\"One of San Jose, Seattle, New York, London, Paris, Tokyo, Sydney or UTC.\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":\"Get the current local date and time in a city.\",\"outer_typed_dict_key\":null,\"strict\":false,\"sequential\":false,\"kind\":\"function\",\"metadata\":null,\"timeout\":null,\"defer_loading\":false,\"unless_native\":null,\"with_native\":null,\"tool_kind\":null,\"return_schema\":null,\"include_return_schema\":null,\"toolset_id\":\"<agent>\",\"capability_id\":null},{\"name\":\"list_workshops\",\"parameters_json_schema\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"day\":{\"type\":\"string\",\"description\":\"The conference day, e.g. \\\"2026-10-22\\\" (Thursday) or \\\"2026-10-23\\\" (Friday).\"}},\"required\":[\"day\"]},\"description\":\"List the hands-on workshops on one conference day, in time order.\",\"outer_typed_dict_key\":null,\"strict\":true,\"sequential\":false,\"kind\":\"function\",\"metadata\":{\"meta\":{\"fastmcp\":{\"tags\":[]}},\"annotations\":null,\"task\":false},\"timeout\":null,\"defer_loading\":false,\"unless_native\":null,\"with_native\":null,\"tool_kind\":null,\"return_schema\":null,\"include_return_schema\":null,\"toolset_id\":null,\"capability_id\":null},{\"name\":\"search_workshops\",\"parameters_json_schema\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"keyword\":{\"type\":\"string\",\"description\":\"A single word or short phrase to search for.\"}},\"required\":[\"keyword\"]},\"description\":\"Find workshops whose title or summary mentions a keyword, e.g. \\\"security\\\", \\\"gateway\\\", \\\"MCP\\\" or \\\"Kubernetes\\\".\",\"outer_typed_dict_key\":null,\"strict\":true,\"sequential\":false,\"kind\":\"function\",\"metadata\":{\"meta\":{\"fastmcp\":{\"tags\":[]}},\"annotations\":null,\"task\":false},\"timeout\":null,\"defer_loading\":false,\"unless_native\":null,\"with_native\":null,\"tool_kind\":null,\"return_schema\":null,\"include_return_schema\":null,\"toolset_id\":null,\"capability_id\":null}],\"native_tools\":[],\"tool_visibility\":{\"current_time\":\"visible\",\"lis"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.definitions",
+                  "value": {
+                    "stringValue": "[{\"type\":\"function\",\"name\":\"current_time\",\"description\":\"Get the current local date and time in a city.\",\"parameters\":{\"additionalProperties\":false,\"properties\":{\"city\":{\"default\":\"San Jose\",\"description\":\"One of San Jose, Seattle, New York, London, Paris, Tokyo, Sydney or UTC.\",\"type\":\"string\"}},\"type\":\"object\"}},{\"type\":\"function\",\"name\":\"list_workshops\",\"description\":\"List the hands-on workshops on one conference day, in time order.\",\"parameters\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"day\":{\"type\":\"string\",\"description\":\"The conference day, e.g. \\\"2026-10-22\\\" (Thursday) or \\\"2026-10-23\\\" (Friday).\"}},\"required\":[\"day\"]}},{\"type\":\"function\",\"name\":\"search_workshops\",\"description\":\"Find workshops whose title or summary mentions a keyword, e.g. \\\"security\\\", \\\"gateway\\\", \\\"MCP\\\" or \\\"Kubernetes\\\".\",\"parameters\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"keyword\":{\"type\":\"string\",\"description\":\"A single word or short phrase to search for.\"}},\"required\":[\"keyword\"]}}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"How many workshops happening throughout the whole conference?\"}]},{\"role\":\"assistant\",\"parts\":[{\"type\":\"text\",\"content\":\"The number of workshops happening throughout the whole conference cannot be determined from the given information.\"}],\"finish_reason\":\"stop\"},{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"Hint: check today and yesterday\"}]},{\"role\":\"assistant\",\"parts\":[{\"type\":\"tool_call\",\"id\":\"call_6vqyha47\",\"name\":\"current_time\",\"arguments\":\"{\\\"city\\\":\\\"San Jose\\\"}\"},{\"type\":\"tool_call\",\"id\":\"call_hbur5yrr\",\"name\":\"list_workshops\",\"arguments\":\"{\\\"day\\\":\\\"2026-10-22\\\"}\"},{\"type\":\"tool_call\",\"id\":\"call_cby6qwih\",\"name\":\"list_workshops\",\"arguments\":\"{\\\"day\\\":\\\"2026-10-21\\\"}\"}],\"finish_reason\":\"stop\"},{\"role\":\"user\",\"parts\":[{\"type\":\"tool_call_response\",\"id\":\"call_6vqyha47\",\"name\":\"current_time\",\"result\":\"Friday 23 October 2026, 12:18 in San Jose\"},{\"type\":\"tool_call_response\",\"id\":\"call_hbur5yrr\",\"name\":\"list_workshops\",\"result\":[{\"title\":\"Hands-on A2A: Service Discovery and Multi-Agent Delegation\",\"day\":\"2026-10-22\",\"weekday\":\"Thursday\",\"start\":\"10:35\",\"end\":\"12:10\",\"room\":\"LL21 DEF\",\"summary\":\"This 75-minute interactive workshop provides a hands-on environment for engineers to explore agent-to-agent (A2A) protocols through practical execution rather than product pitches.\"},{\"title\":\"The Buzz-Word Is Collaboration\",\"day\":\"2026-10-22\",\"weekday\":\"Thursday\",\"start\":\"14:20\",\"end\":\"15:55\",\"room\":\"LL21 DEF\",\"summary\":\"Put agents where the work is: a shared, channel-driven workspace where people and agents share conversations, code and reviews.\"},{\"title\":\"Keep Infrastructure Out of Your AI Agents and MCP Servers\",\"day\":\"2026-10-22\",\"weekday\":\"Thursday\",\"start\":\"16:05\",\"end\":\"17:40\",\"room\":\"LL21 DEF\",\"summary\":\"The agent gateway pattern: secure and federate MCP servers, route and fail over LLM traffic, enforce policy and observe agent traffic.\"}]},{\"type\":\"tool_call_response\",\"id\":\"call_cby6qwih\",\"name\":\"list_workshops\",\"result\":[{\"error\":\"Unknown day '2026-10-21'"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"role\":\"assistant\",\"parts\":[{\"type\":\"text\",\"content\":\"There is 1 workshop about LGTM: \\\"Stack It Yourself: Open Infrastructure for AI Agents, from Compose to Cluster\\\" on Friday, 2026-10-23.\"}],\"finish_reason\":\"stop\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.system_instructions",
+                  "value": {
+                    "stringValue": "[{\"type\":\"text\",\"content\":\"You are the assistant for AGNTCon + MCPCon North America 2026 in San Jose. You have tools for the workshop schedule and the current time. If a question is about workshops, sessions, rooms, days or the time, use a tool to get the facts first, then answer in one to three sentences using only what the tool returned. Never describe a tool call in your reply - just make it.\"}]"
+                  }
+                },
+                {
+                  "key": "logfire.json_schema",
+                  "value": {
+                    "stringValue": "{\"type\":\"object\",\"properties\":{\"gen_ai.input.messages\":{\"type\":\"array\"},\"gen_ai.output.messages\":{\"type\":\"array\"},\"gen_ai.system_instructions\":{\"type\":\"array\"},\"model_request_parameters\":{\"type\":\"object\"}}}"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "2045"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "42"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1912"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.details.reasoning_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.details.cache_read_tokens",
+                  "value": {
+                    "intValue": "1912"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "qwen3:1.7b"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.id",
+                  "value": {
+                    "stringValue": "resp_265991"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.finish_reasons",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "stop"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "server.address",
+                  "value": {
+                    "stringValue": "ollama"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "a1370a2de0474bdc",
+              "parentSpanIdHex": "c1d3476ac209dc5f"
+            },
+            {
+              "traceId": "ZRVRh84pjSbvMTREdTa6Lg==",
+              "spanId": "wdNHasIJ3F8=",
+              "parentSpanId": "YFz8WPXiqt0=",
+              "name": "invoke_agent conference-assistant",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792783296602370594",
+              "endTimeUnixNano": "1792783306069093311",
+              "attributes": [
+                {
+                  "key": "model_name",
+                  "value": {
+                    "stringValue": "qwen3:1.7b"
+                  }
+                },
+                {
+                  "key": "agent_name",
+                  "value": {
+                    "stringValue": "conference-assistant"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "conference-assistant"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.call.id",
+                  "value": {
+                    "stringValue": "01a16a36-2857-7674-b888-7e3194fb6909"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "916a39739422"
+                  }
+                },
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "logfire.msg",
+                  "value": {
+                    "stringValue": "conference-assistant run"
+                  }
+                },
+                {
+                  "key": "final_result",
+                  "value": {
+                    "stringValue": "There is 1 workshop about LGTM: \"Stack It Yourself: Open Infrastructure for AI Agents, from Compose to Cluster\" on Friday, 2026-10-23."
+                  }
+                },
+                {
+                  "key": "gen_ai.aggregated_usage.input_tokens",
+                  "value": {
+                    "intValue": "3961"
+                  }
+                },
+                {
+                  "key": "gen_ai.aggregated_usage.output_tokens",
+                  "value": {
+                    "intValue": "64"
+                  }
+                },
+                {
+                  "key": "gen_ai.aggregated_usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "3625"
+                  }
+                },
+                {
+                  "key": "gen_ai.aggregated_usage.details.reasoning_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.aggregated_usage.details.cache_read_tokens",
+                  "value": {
+                    "intValue": "3625"
+                  }
+                },
+                {
+                  "key": "pydantic_ai.all_messages",
+                  "value": {
+                    "stringValue": "[{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"How many workshops happening throughout the whole conference?\"}]},{\"role\":\"assistant\",\"parts\":[{\"type\":\"text\",\"content\":\"The number of workshops happening throughout the whole conference cannot be determined from the given information.\"}],\"finish_reason\":\"stop\"},{\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"content\":\"Hint: check today and yesterday\"}]},{\"role\":\"assistant\",\"parts\":[{\"type\":\"tool_call\",\"id\":\"call_6vqyha47\",\"name\":\"current_time\",\"arguments\":\"{\\\"city\\\":\\\"San Jose\\\"}\"},{\"type\":\"tool_call\",\"id\":\"call_hbur5yrr\",\"name\":\"list_workshops\",\"arguments\":\"{\\\"day\\\":\\\"2026-10-22\\\"}\"},{\"type\":\"tool_call\",\"id\":\"call_cby6qwih\",\"name\":\"list_workshops\",\"arguments\":\"{\\\"day\\\":\\\"2026-10-21\\\"}\"}],\"finish_reason\":\"stop\"},{\"role\":\"user\",\"parts\":[{\"type\":\"tool_call_response\",\"id\":\"call_6vqyha47\",\"name\":\"current_time\",\"result\":\"Friday 23 October 2026, 12:18 in San Jose\"},{\"type\":\"tool_call_response\",\"id\":\"call_hbur5yrr\",\"name\":\"list_workshops\",\"result\":[{\"title\":\"Hands-on A2A: Service Discovery and Multi-Agent Delegation\",\"day\":\"2026-10-22\",\"weekday\":\"Thursday\",\"start\":\"10:35\",\"end\":\"12:10\",\"room\":\"LL21 DEF\",\"summary\":\"This 75-minute interactive workshop provides a hands-on environment for engineers to explore agent-to-agent (A2A) protocols through practical execution rather than product pitches.\"},{\"title\":\"The Buzz-Word Is Collaboration\",\"day\":\"2026-10-22\",\"weekday\":\"Thursday\",\"start\":\"14:20\",\"end\":\"15:55\",\"room\":\"LL21 DEF\",\"summary\":\"Put agents where the work is: a shared, channel-driven workspace where people and agents share conversations, code and reviews.\"},{\"title\":\"Keep Infrastructure Out of Your AI Agents and MCP Servers\",\"day\":\"2026-10-22\",\"weekday\":\"Thursday\",\"start\":\"16:05\",\"end\":\"17:40\",\"room\":\"LL21 DEF\",\"summary\":\"The agent gateway pattern: secure and federate MCP servers, route and fail over LLM traffic, enforce policy and observe agent traffic.\"}]},{\"type\":\"tool_call_response\",\"id\":\"call_cby6qwih\",\"name\":\"list_workshops\",\"result\":[{\"error\":\"Unknown day '2026-10-21'"
+                  }
+                },
+                {
+                  "key": "gen_ai.system_instructions",
+                  "value": {
+                    "stringValue": "[{\"type\":\"text\",\"content\":\"You are the assistant for AGNTCon + MCPCon North America 2026 in San Jose. You have tools for the workshop schedule and the current time. If a question is about workshops, sessions, rooms, days or the time, use a tool to get the facts first, then answer in one to three sentences using only what the tool returned. Never describe a tool call in your reply - just make it.\"}]"
+                  }
+                },
+                {
+                  "key": "pydantic_ai.new_message_index",
+                  "value": {
+                    "intValue": "18"
+                  }
+                },
+                {
+                  "key": "logfire.json_schema",
+                  "value": {
+                    "stringValue": "{\"type\":\"object\",\"properties\":{\"pydantic_ai.all_messages\":{\"type\":\"array\"},\"gen_ai.system_instructions\":{\"type\":\"array\"},\"pydantic_ai.new_message_index\":{},\"final_result\":{\"type\":\"object\"}}}"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "65155187ce298d26ef3134447536ba2e",
+              "spanIdHex": "c1d3476ac209dc5f",
+              "parentSpanIdHex": "605cfc58f5e2aadd"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "traceID": "172e564db97c5e68d2ae0dce4c14fcfa",
+  "rootServiceName": "agent",
+  "rootTraceName": "GET /",
+  "startTimeUnixNano": "1792780388633290042",
+  "startTimeUTC": "2026-10-23T18:33:08.633290+00:00",
+  "durationMs": 2,
+  "spanSets": [
+    {
+      "spans": [
+        {
+          "spanID": "dea3dbea9e91e57c",
+          "startTimeUnixNano": "1792780388634693027",
+          "durationNanos": "59142"
+        },
+        {
+          "spanID": "8174944893c9b1fe",
+          "startTimeUnixNano": "1792780388634967687",
+          "durationNanos": "48963"
+        },
+        {
+          "spanID": "8600861d8d3d092f",
+          "startTimeUnixNano": "1792780388635898709",
+          "durationNanos": "27763"
+        }
+      ],
+      "matched": 5
+    }
+  ],
+  "batches": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "3bd59084-4a69-4682-ab55-8ef7764f7dd0"
+            }
+          },
+          {
+            "key": "telemetry.auto.version",
+            "value": {
+              "stringValue": "0.66b0"
+            }
+          },
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.45.0"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "agent"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "opentelemetry.instrumentation.fastapi",
+            "version": "0.66b0"
+          },
+          "spans": [
+            {
+              "traceId": "Fy5WTbl8XmjSrg3OTBT8+g==",
+              "spanId": "3qPb6p6R5Xw=",
+              "parentSpanId": "iV62fPemE2w=",
+              "name": "GET / http receive",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792780388634693027",
+              "endTimeUnixNano": "1792780388634752169",
+              "attributes": [
+                {
+                  "key": "asgi.event.type",
+                  "value": {
+                    "stringValue": "http.request"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "172e564db97c5e68d2ae0dce4c14fcfa",
+              "spanIdHex": "dea3dbea9e91e57c",
+              "parentSpanIdHex": "895eb67cf7a6136c"
+            },
+            {
+              "traceId": "Fy5WTbl8XmjSrg3OTBT8+g==",
+              "spanId": "gXSUSJPJsf4=",
+              "parentSpanId": "iV62fPemE2w=",
+              "name": "GET / http send",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792780388634967687",
+              "endTimeUnixNano": "1792780388635016650",
+              "attributes": [
+                {
+                  "key": "asgi.event.type",
+                  "value": {
+                    "stringValue": "http.response.start"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "172e564db97c5e68d2ae0dce4c14fcfa",
+              "spanIdHex": "8174944893c9b1fe",
+              "parentSpanIdHex": "895eb67cf7a6136c"
+            },
+            {
+              "traceId": "Fy5WTbl8XmjSrg3OTBT8+g==",
+              "spanId": "hgCGHY09CS8=",
+              "parentSpanId": "iV62fPemE2w=",
+              "name": "GET / http send",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792780388635898709",
+              "endTimeUnixNano": "1792780388635926472",
+              "attributes": [
+                {
+                  "key": "asgi.event.type",
+                  "value": {
+                    "stringValue": "http.response.body"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "172e564db97c5e68d2ae0dce4c14fcfa",
+              "spanIdHex": "8600861d8d3d092f",
+              "parentSpanIdHex": "895eb67cf7a6136c"
+            },
+            {
+              "traceId": "Fy5WTbl8XmjSrg3OTBT8+g==",
+              "spanId": "iV62fPemE2w=",
+              "name": "GET /",
+              "kind": "SPAN_KIND_SERVER",
+              "startTimeUnixNano": "1792780388633290042",
+              "endTimeUnixNano": "1792780388636045818",
+              "attributes": [
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "http"
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "172.18.0.4:8000"
+                  }
+                },
+                {
+                  "key": "net.host.port",
+                  "value": {
+                    "intValue": "8000"
+                  }
+                },
+                {
+                  "key": "http.flavor",
+                  "value": {
+                    "stringValue": "1.1"
+                  }
+                },
+                {
+                  "key": "http.target",
+                  "value": {
+                    "stringValue": "/"
+                  }
+                },
+                {
+                  "key": "http.server_name",
+                  "value": {
+                    "stringValue": "localhost:8000"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36"
+                  }
+                },
+                {
+                  "key": "net.peer.ip",
+                  "value": {
+                    "stringValue": "172.18.0.1"
+                  }
+                },
+                {
+                  "key": "net.peer.port",
+                  "value": {
+                    "intValue": "36266"
+                  }
+                },
+                {
+                  "key": "http.route",
+                  "value": {
+                    "stringValue": "/"
+                  }
+                },
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "GET"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "http://localhost:8000/"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "172e564db97c5e68d2ae0dce4c14fcfa",
+              "spanIdHex": "895eb67cf7a6136c"
+            },
+            {
+              "traceId": "Fy5WTbl8XmjSrg3OTBT8+g==",
+              "spanId": "fdGmn/8KqP8=",
+              "parentSpanId": "iV62fPemE2w=",
+              "name": "GET / http receive",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792780388634855906",
+              "endTimeUnixNano": "1792780388636133103",
+              "attributes": [
+                {
+                  "key": "asgi.event.type",
+                  "value": {
+                    "stringValue": "http.disconnect"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "172e564db97c5e68d2ae0dce4c14fcfa",
+              "spanIdHex": "7dd1a69fff0aa8ff",
+              "parentSpanIdHex": "895eb67cf7a6136c"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

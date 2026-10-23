@@ -1,0 +1,223 @@
+{
+  "traceID": "d64217e584cc08b84030a588a7dc5683",
+  "rootServiceName": "agent",
+  "rootTraceName": "GET /conversations/{conversation_id}",
+  "startTimeUnixNano": "1792779797115588400",
+  "startTimeUTC": "2026-10-23T18:23:17.115588+00:00",
+  "durationMs": 2,
+  "spanSets": [
+    {
+      "spans": [
+        {
+          "spanID": "6a5d3684043a0e1c",
+          "startTimeUnixNano": "1792779797117337723",
+          "durationNanos": "79230"
+        },
+        {
+          "spanID": "3f29366cc08b6671",
+          "startTimeUnixNano": "1792779797117727970",
+          "durationNanos": "38793"
+        },
+        {
+          "spanID": "1693a0965ad39f0d",
+          "startTimeUnixNano": "1792779797115588400",
+          "durationNanos": "2304662"
+        }
+      ],
+      "matched": 3
+    }
+  ],
+  "batches": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "3bd59084-4a69-4682-ab55-8ef7764f7dd0"
+            }
+          },
+          {
+            "key": "telemetry.auto.version",
+            "value": {
+              "stringValue": "0.66b0"
+            }
+          },
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.45.0"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "agent"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "opentelemetry.instrumentation.fastapi",
+            "version": "0.66b0"
+          },
+          "spans": [
+            {
+              "traceId": "1kIX5YTMCLhAMKWIp9xWgw==",
+              "spanId": "al02hAQ6Dhw=",
+              "parentSpanId": "FpOgllrTnw0=",
+              "name": "GET /conversations/{conversation_id} http send",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792779797117337723",
+              "endTimeUnixNano": "1792779797117416953",
+              "attributes": [
+                {
+                  "key": "asgi.event.type",
+                  "value": {
+                    "stringValue": "http.response.start"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "d64217e584cc08b84030a588a7dc5683",
+              "spanIdHex": "6a5d3684043a0e1c",
+              "parentSpanIdHex": "1693a0965ad39f0d"
+            },
+            {
+              "traceId": "1kIX5YTMCLhAMKWIp9xWgw==",
+              "spanId": "Pyk2bMCLZnE=",
+              "parentSpanId": "FpOgllrTnw0=",
+              "name": "GET /conversations/{conversation_id} http send",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792779797117727970",
+              "endTimeUnixNano": "1792779797117766763",
+              "attributes": [
+                {
+                  "key": "asgi.event.type",
+                  "value": {
+                    "stringValue": "http.response.body"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "d64217e584cc08b84030a588a7dc5683",
+              "spanIdHex": "3f29366cc08b6671",
+              "parentSpanIdHex": "1693a0965ad39f0d"
+            },
+            {
+              "traceId": "1kIX5YTMCLhAMKWIp9xWgw==",
+              "spanId": "FpOgllrTnw0=",
+              "name": "GET /conversations/{conversation_id}",
+              "kind": "SPAN_KIND_SERVER",
+              "startTimeUnixNano": "1792779797115588400",
+              "endTimeUnixNano": "1792779797117893062",
+              "attributes": [
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "http"
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "172.18.0.4:8000"
+                  }
+                },
+                {
+                  "key": "net.host.port",
+                  "value": {
+                    "intValue": "8000"
+                  }
+                },
+                {
+                  "key": "http.flavor",
+                  "value": {
+                    "stringValue": "1.1"
+                  }
+                },
+                {
+                  "key": "http.target",
+                  "value": {
+                    "stringValue": "/conversations/1cf5420451e1"
+                  }
+                },
+                {
+                  "key": "http.server_name",
+                  "value": {
+                    "stringValue": "localhost:8000"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36"
+                  }
+                },
+                {
+                  "key": "net.peer.ip",
+                  "value": {
+                    "stringValue": "172.18.0.1"
+                  }
+                },
+                {
+                  "key": "net.peer.port",
+                  "value": {
+                    "intValue": "52270"
+                  }
+                },
+                {
+                  "key": "http.route",
+                  "value": {
+                    "stringValue": "/conversations/{conversation_id}"
+                  }
+                },
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "GET"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "http://localhost:8000/conversations/1cf5420451e1"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "d64217e584cc08b84030a588a7dc5683",
+              "spanIdHex": "1693a0965ad39f0d"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "traceID": "14f101e4b1553c521537364d4043017e",
+  "rootServiceName": "agent",
+  "rootTraceName": "GET /info",
+  "startTimeUnixNano": "1792780663913668590",
+  "startTimeUTC": "2026-10-23T18:37:43.913669+00:00",
+  "durationMs": 1,
+  "spanSets": [
+    {
+      "spans": [
+        {
+          "spanID": "2b496fe0c33ba42f",
+          "startTimeUnixNano": "1792780663914307119",
+          "durationNanos": "58792"
+        },
+        {
+          "spanID": "56581c70497c6c6c",
+          "startTimeUnixNano": "1792780663914671128",
+          "durationNanos": "33544"
+        },
+        {
+          "spanID": "255fe2047c9b0db3",
+          "startTimeUnixNano": "1792780663913668590",
+          "durationNanos": "1142584"
+        }
+      ],
+      "matched": 3
+    }
+  ],
+  "batches": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "3bd59084-4a69-4682-ab55-8ef7764f7dd0"
+            }
+          },
+          {
+            "key": "telemetry.auto.version",
+            "value": {
+              "stringValue": "0.66b0"
+            }
+          },
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.45.0"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "agent"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "opentelemetry.instrumentation.fastapi",
+            "version": "0.66b0"
+          },
+          "spans": [
+            {
+              "traceId": "FPEB5LFVPFIVNzZNQEMBfg==",
+              "spanId": "K0lv4MM7pC8=",
+              "parentSpanId": "JV/iBHybDbM=",
+              "name": "GET /info http send",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792780663914307119",
+              "endTimeUnixNano": "1792780663914365911",
+              "attributes": [
+                {
+                  "key": "asgi.event.type",
+                  "value": {
+                    "stringValue": "http.response.start"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "14f101e4b1553c521537364d4043017e",
+              "spanIdHex": "2b496fe0c33ba42f",
+              "parentSpanIdHex": "255fe2047c9b0db3"
+            },
+            {
+              "traceId": "FPEB5LFVPFIVNzZNQEMBfg==",
+              "spanId": "VlgccEl8bGw=",
+              "parentSpanId": "JV/iBHybDbM=",
+              "name": "GET /info http send",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792780663914671128",
+              "endTimeUnixNano": "1792780663914704672",
+              "attributes": [
+                {
+                  "key": "asgi.event.type",
+                  "value": {
+                    "stringValue": "http.response.body"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "14f101e4b1553c521537364d4043017e",
+              "spanIdHex": "56581c70497c6c6c",
+              "parentSpanIdHex": "255fe2047c9b0db3"
+            },
+            {
+              "traceId": "FPEB5LFVPFIVNzZNQEMBfg==",
+              "spanId": "JV/iBHybDbM=",
+              "name": "GET /info",
+              "kind": "SPAN_KIND_SERVER",
+              "startTimeUnixNano": "1792780663913668590",
+              "endTimeUnixNano": "1792780663914811174",
+              "attributes": [
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "http"
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "172.18.0.4:8000"
+                  }
+                },
+                {
+                  "key": "net.host.port",
+                  "value": {
+                    "intValue": "8000"
+                  }
+                },
+                {
+                  "key": "http.flavor",
+                  "value": {
+                    "stringValue": "1.1"
+                  }
+                },
+                {
+                  "key": "http.target",
+                  "value": {
+                    "stringValue": "/info"
+                  }
+                },
+                {
+                  "key": "http.server_name",
+                  "value": {
+                    "stringValue": "localhost:8000"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36"
+                  }
+                },
+                {
+                  "key": "net.peer.ip",
+                  "value": {
+                    "stringValue": "172.18.0.1"
+                  }
+                },
+                {
+                  "key": "net.peer.port",
+                  "value": {
+                    "intValue": "53956"
+                  }
+                },
+                {
+                  "key": "http.route",
+                  "value": {
+                    "stringValue": "/info"
+                  }
+                },
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "GET"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "http://localhost:8000/info"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "200"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "14f101e4b1553c521537364d4043017e",
+              "spanIdHex": "255fe2047c9b0db3"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

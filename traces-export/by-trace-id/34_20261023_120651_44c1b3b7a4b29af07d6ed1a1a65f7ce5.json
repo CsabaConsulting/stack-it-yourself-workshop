@@ -1,0 +1,128 @@
+{
+  "traceID": "44c1b3b7a4b29af07d6ed1a1a65f7ce5",
+  "rootServiceName": "mcp-server",
+  "rootTraceName": "tools/list",
+  "startTimeUnixNano": "1792782411828053221",
+  "startTimeUTC": "2026-10-23T19:06:51.828053+00:00",
+  "durationMs": null,
+  "spanSets": [
+    {
+      "spans": [
+        {
+          "spanID": "7b1788f792d18bbf",
+          "startTimeUnixNano": "1792782411828053221",
+          "durationNanos": "775529"
+        }
+      ],
+      "matched": 1
+    }
+  ],
+  "batches": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.instance.id",
+            "value": {
+              "stringValue": "49212752-523c-4f7a-9d0b-7fc36649553c"
+            }
+          },
+          {
+            "key": "telemetry.auto.version",
+            "value": {
+              "stringValue": "0.66b0"
+            }
+          },
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.45.0"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "mcp-server"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "fastmcp"
+          },
+          "spans": [
+            {
+              "traceId": "RMGzt6SymvB9btGhpl985Q==",
+              "spanId": "exeI95LRi78=",
+              "name": "tools/list",
+              "kind": "SPAN_KIND_SERVER",
+              "startTimeUnixNano": "1792782411828053221",
+              "endTimeUnixNano": "1792782411828828750",
+              "attributes": [
+                {
+                  "key": "fastmcp.span.seam",
+                  "value": {
+                    "boolValue": true
+                  }
+                },
+                {
+                  "key": "mcp.method.name",
+                  "value": {
+                    "stringValue": "tools/list"
+                  }
+                },
+                {
+                  "key": "fastmcp.server.name",
+                  "value": {
+                    "stringValue": "agntcon-schedule"
+                  }
+                },
+                {
+                  "key": "fastmcp.component.type",
+                  "value": {
+                    "stringValue": "tool"
+                  }
+                },
+                {
+                  "key": "fastmcp.component.key",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "mcp.protocol.version",
+                  "value": {
+                    "stringValue": "2026-07-28"
+                  }
+                },
+                {
+                  "key": "mcp.session.id",
+                  "value": {
+                    "stringValue": "bf6e18de-951c-4bd5-a820-47a13d4f722f"
+                  }
+                }
+              ],
+              "status": {},
+              "traceIdHex": "44c1b3b7a4b29af07d6ed1a1a65f7ce5",
+              "spanIdHex": "7b1788f792d18bbf"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

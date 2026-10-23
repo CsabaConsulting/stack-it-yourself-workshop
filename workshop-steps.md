@@ -179,6 +179,12 @@ git --version
 
 **Why this is needed:** an installed Docker CLI is only a client. The background engine must also be running for it to create containers. Compose also needs features used by this repository's configuration.
 
+**NOTE** - make sure that you are logged in to Docker in the terminal that you are using.  If not, you may get errors on some of the steps. 
+
+```bash
+docker login
+```
+
 ### 2. Get the repository
 
 Skip cloning if you already have this repository. Open a terminal at its root instead.
@@ -285,7 +291,7 @@ If downloads are impossible, use the [offline recovery path](#a-import-an-offlin
 
 ### Observe an assistant without tools
 
-The presenter starts the Step 1 stack and asks:
+Open the app UI at **http://localhost:8000**.and ask:
 
 > What workshops are on Friday?
 
@@ -509,7 +515,19 @@ tools: none
 telemetry: off
 ```
 
-Ask another simple question. Use the log command from Step 1 and look for `/v1/responses` instead of `/v1/chat/completions`.
+Ask another simple question. Use the log command from Step 1 and look for `/v1/responses` instead of `/v1/chat/completions`:
+
+**PowerShell:**
+
+```powershell
+docker compose logs --tail 100 agent | Select-String "HTTP Request"
+```
+
+**Bash:**
+
+```bash
+docker compose logs --tail 100 agent | grep "HTTP Request"
+```
 
 ### 3. Explain what changed, and what did not
 
@@ -584,6 +602,12 @@ Two switches are necessary:
 Starting only a dashboard would not create application telemetry. Enabling export without a reachable receiver would leave it nowhere useful to go.
 
 Wait for Grafana to start at **http://localhost:3000**. It can take tens of seconds. The supplied development image normally opens without a login.
+
+Check all services:
+
+```bash
+docker compose ps
+```
 
 `docker compose ps` shows `lgtm` as running; this service has no Compose healthcheck, so a missing `healthy` label for it is not by itself a failure.
 
